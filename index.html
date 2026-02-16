@@ -2,7 +2,7 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Szymon Domagalski – Social Media GURU</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,8 +12,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
   <style>
     :root{
@@ -39,7 +39,12 @@
       overflow-x: hidden;
     }
 
-    .section-pad{ padding: 64px 0; }
+    /* Mobile-first spacing (bardziej “tight” na telefonie) */
+    .section-pad{ padding: 44px 0; }
+    @media (min-width: 768px){
+      .section-pad{ padding: 64px 0; }
+    }
+
     .glass{
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
       border: 1px solid var(--border);
@@ -67,6 +72,7 @@
       font-weight: 500;
       border-radius: 999px;
       padding: .55rem .85rem !important;
+      -webkit-tap-highlight-color: transparent;
     }
     .nav-link:hover{ color: var(--text) !important; background: rgba(255,255,255,.06); }
 
@@ -74,41 +80,40 @@
 
     /* HERO */
     .hero-wrap{ padding-top: 92px; }
+
+    /* Mobile-first typografia */
     .hero-title{
-      font-size: clamp(1.7rem, 3.2vw, 2.6rem);
+      font-size: clamp(1.35rem, 5.2vw, 2.6rem);
       font-weight: 700;
       line-height: 1.12;
-      margin-bottom: .85rem;
+      margin-bottom: .75rem;
     }
     .hero-lead{
-      font-size: 1.02rem;
+      font-size: clamp(.98rem, 3.6vw, 1.05rem);
       color: var(--muted);
-      margin-bottom: 1rem;
+      margin-bottom: .85rem;
     }
 
-    /* SLIDER: centered content + equal height slides */
+    /* HERO SLIDER */
     .carousel{ overflow: hidden; }
     .carousel .carousel-item{ padding: 6px 0; }
 
-    /* Equal height for each slide card:
-       - desktop: 520px
-       - smaller: auto but still aligned nicely */
+    /* Mobile: niższe slajdy, mniej “scrolla” */
     .hero-slider-card{
       position: relative;
       overflow: hidden;
-      padding: 28px;
-      min-height: 520px; /* SAME HEIGHT for all slides */
-      display: flex;     /* center the content block */
+      padding: 18px;
+      min-height: 430px;
+      display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
     }
-    @media (max-width: 991.98px){
-      .hero-slider-card{ min-height: 560px; padding: 22px; }
+    @media (min-width: 576px){
+      .hero-slider-card{ padding: 22px; min-height: 480px; }
     }
-    @media (max-width: 575.98px){
-      .hero-slider-card{ min-height: 610px; padding: 18px; }
-      .navbar-brand{ font-size: 1rem; }
+    @media (min-width: 992px){
+      .hero-slider-card{ padding: 28px; min-height: 520px; }
     }
 
     .hero-slider-card:before{
@@ -121,7 +126,6 @@
     }
     .hero-slider-card > *{ position: relative; z-index: 1; }
 
-    /* Make a max width for readability + keep centered */
     .hero-slide-inner{
       width: min(900px, 100%);
       margin-inline: auto;
@@ -132,18 +136,24 @@
       align-items: center;
       justify-content: center;
       gap: .55rem;
-      padding: .5rem .75rem;
+      padding: .48rem .70rem;
       border-radius: 999px;
       border: 1px solid var(--border);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.88);
       font-weight: 500;
-      margin: .35rem;
+      margin: .30rem;
       white-space: nowrap;
+      font-size: .95rem;
+    }
+    @media (max-width: 575.98px){
+      .icon-pill{ font-size: .90rem; }
     }
 
-    /* Controls + indicators */
-    .carousel-control-prev, .carousel-control-next{ width: 10%; }
+    .carousel-control-prev, .carousel-control-next{ width: 12%; }
+    @media (min-width: 992px){
+      .carousel-control-prev, .carousel-control-next{ width: 10%; }
+    }
     .carousel-control-prev-icon, .carousel-control-next-icon{
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
       opacity: .85;
@@ -157,14 +167,21 @@
     .carousel-indicators .active{ opacity: .9; }
 
     /* Sections */
-    .section-title{ font-weight: 700; letter-spacing: .2px; font-size: clamp(1.25rem, 2.2vw, 1.8rem); }
+    .section-title{
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(1.22rem, 3.8vw, 1.8rem);
+    }
     .section-sub{ color: var(--muted); margin-top: .35rem; }
 
-    /* Reels grid */
-    .reel-grid{ display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
-    @media (max-width: 991.98px){ .reel-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 575.98px){ .reel-grid{ grid-template-columns: 1fr; } }
+    /* Justify text */
+    .text-justify{
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
 
+    /* Reel card */
     .reel-card{ padding: 12px; }
     .reel-frame{
       position: relative;
@@ -174,6 +191,7 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(0,0,0,.25);
+      transform: translateZ(0);
     }
     .reel-frame img, .reel-frame video{
       width: 100%;
@@ -188,13 +206,14 @@
         radial-gradient(350px 250px at 50% 80%, rgba(0,0,0,.35), transparent 55%),
         radial-gradient(300px 180px at 20% 20%, rgba(255,255,255,.10), transparent 55%);
       pointer-events: none;
+      z-index: 2;
     }
     .reel-overlay{
       position: absolute;
       inset: 0;
       display: grid;
       place-items: center;
-      z-index: 2;
+      z-index: 3;
     }
     .reel-play{
       width: 58px; height: 58px;
@@ -204,6 +223,7 @@
       display: grid; place-items: center;
       backdrop-filter: blur(8px);
       cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
     }
     .reel-play svg{ width: 24px; height: 24px; }
     .reel-play:focus-visible{
@@ -211,22 +231,53 @@
       outline-offset: 3px;
     }
 
-    /* About */
+    /* Swiper PRO (mobile-first: mocniejszy “peek” + lepsze swipe) */
+    .reels-swiper{
+      overflow: visible;
+      padding: 6px 0 28px;
+    }
+    .reels-swiper .swiper-slide{ height: auto; }
+
+    .swiper-nav{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .swiper-btn{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.9);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+    }
+    .swiper-btn:hover{ background: rgba(255,255,255,.08); }
+
+    .swiper-pagination-bullet{ width: 8px; height: 8px; opacity: .35; }
+    .swiper-pagination-bullet-active{ opacity: .9; }
+
+    /* ABOUT: Mobile ok + desktop no-crop */
     .about-img{
       width: 100%;
       border-radius: var(--radius);
       border: 1px solid rgba(255,255,255,.10);
       box-shadow: var(--shadow);
-      object-fit: cover;
+      display: block;
+      object-fit: cover;        /* mobile: wypełnia ładnie */
       min-height: 260px;
       max-height: 420px;
     }
-    .check-dot{
-      width: 10px; height: 10px; border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      display: inline-block;
-      margin-right: .6rem;
-      translate: 0 -1px;
+    @media (min-width: 992px){
+      .about-img{
+        object-fit: contain;      /* desktop: bez przycinania */
+        background: rgba(0,0,0,.18);
+        max-height: 520px;
+        min-height: 360px;
+      }
     }
 
     /* Footer */
@@ -238,16 +289,49 @@
       color: rgba(255,255,255,.82);
       text-decoration: none;
       border-radius: 12px;
-      padding: .55rem .7rem;
+      padding: .70rem .85rem; /* większy touch target na mobile */
       display: inline-flex;
       align-items: center;
       gap: .55rem;
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
+      -webkit-tap-highlight-color: transparent;
     }
     .footer-link:hover{ color: #fff; background: rgba(255,255,255,.07); }
     .footer-link i{ font-size: 1.15rem; line-height: 1; }
   </style>
+
+  <!-- META PIXEL (wklej swój Pixel ID) -->
+  <script>
+    const META_PIXEL_ID = "PUT_YOUR_PIXEL_ID_HERE";
+
+    (function(f,b,e,v,n,t,s){
+      if(f.fbq) return;
+      n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments) };
+      if(!f._fbq) f._fbq=n;
+      n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
+      t=b.createElement(e); t.async=!0;
+      t.src=v; s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s);
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+
+    function fbSafeTrack(eventName, params){
+      if (!META_PIXEL_ID || META_PIXEL_ID.includes("PUT_YOUR")) return;
+      try{
+        if (!window.__fb_inited){
+          fbq('init', META_PIXEL_ID);
+          window.__fb_inited = true;
+        }
+        fbq('track', eventName, params || {});
+      }catch(e){}
+    }
+
+    fbSafeTrack('PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=PUT_YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
+  </noscript>
 </head>
 
 <body>
@@ -279,7 +363,7 @@
     </div>
   </nav>
 
-  <!-- HERO SLIDER 3x (CENTERED + EQUAL HEIGHT) -->
+  <!-- HERO SLIDER -->
   <header id="home" class="hero-wrap anchor-offset">
     <div class="container section-pad">
       <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
@@ -291,7 +375,6 @@
 
         <div class="carousel-inner">
 
-          <!-- Slide 1 -->
           <div class="carousel-item active">
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
@@ -309,19 +392,16 @@
                 <p class="muted mb-0 mt-2">
                   Ty kontaktujesz się z nimi i zamykasz sprzedaż.
                 </p>
-                
+
                 <div class="d-flex flex-wrap justify-content-center">
                   <span class="icon-pill">📞 telefon</span>
                   <span class="icon-pill">📧 e-mail</span>
                   <span class="icon-pill">📦 informacja, jakim produktem lub usługą są zainteresowani</span>
                 </div>
-
-
               </div>
             </div>
           </div>
 
-          <!-- Slide 2 -->
           <div class="carousel-item">
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
@@ -344,7 +424,6 @@
             </div>
           </div>
 
-          <!-- Slide 3 -->
           <div class="carousel-item">
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
@@ -364,7 +443,6 @@
                   Warsztaty skupiają się przede wszystkim na praktyce i pracy na realnych przykładach, dzięki czemu uczestnicy
                   od razu zdobywają użyteczne umiejętności.
                 </p>
-
               </div>
             </div>
           </div>
@@ -381,113 +459,118 @@
     </div>
   </header>
 
-  <!-- REALIZACJE -->
+  <!-- REALIZACJE (SWIPER PRO) -->
   <section id="realizacje" class="section-pad anchor-offset">
     <div class="container">
-      <div class="row align-items-end g-3 mb-4">
+      <div class="row align-items-end g-3 mb-3">
         <div class="col-lg-8">
           <h2 class="section-title mb-1">Najlepsze realizacje / rolki</h2>
-          <p class="section-sub mb-0">Rolki są widoczne od razu na stronie — wideo ładuje się dopiero po kliknięciu.</p>
+          <p class="section-sub mb-0">Swipe jak Instagram + peek. Autoplay tylko aktywnego slajdu.</p>
+        </div>
+        <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+          <div class="swiper-nav">
+            <div class="swiper-btn" id="reelsPrev" aria-label="Poprzednia"><i class="bi bi-chevron-left"></i></div>
+            <div class="swiper-btn" id="reelsNext" aria-label="Następna"><i class="bi bi-chevron-right"></i></div>
+          </div>
         </div>
       </div>
 
-      <div class="reel-grid">
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_1.4s.png" alt="Miniatura rolki 1" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 1"
-                data-mp4="videos/arrosta%20fina%C5%82%20.mp4"
-                data-poster="posters/thumbnail_1_1.4s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+      <div class="swiper reels-swiper" id="reelsSwiper">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/arrosta%20fina%C5%82%20.mp4" data-poster="posters/thumbnail_1_1.4s.png" data-reel-id="reel_01">
+                <img src="posters/thumbnail_1_1.4s.png" alt="Miniatura rolki 1" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_2.1s.png" alt="Miniatura rolki 2" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 2"
-                data-mp4="videos/🍦 Mini Freezer Gelato Chef 5L Nemox – profesjonalne lody w Twojej kawiarni, lodziarni i domu!✅ .mp4"
-                data-poster="posters/thumbnail_1_2.1s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/🍦 Mini Freezer Gelato Chef 5L Nemox – profesjonalne lody w Twojej kawiarni, lodziarni i domu!✅ .mp4" data-poster="posters/thumbnail_1_2.1s.png" data-reel-id="reel_02">
+                <img src="posters/thumbnail_1_2.1s.png" alt="Miniatura rolki 2" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_29.0s.png" alt="Miniatura rolki 3" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 3"
-                data-mp4="videos/🎉 Contur Mix – 40 lat z komiksem! 🎨📍 18.07–31.08.2025 - Galeria CKiS, SkierniewiceZapraszamy .mp4"
-                data-poster="posters/thumbnail_1_29.0s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/🎉 Contur Mix – 40 lat z komiksem! 🎨📍 18.07–31.08.2025 - Galeria CKiS, SkierniewiceZapraszamy .mp4" data-poster="posters/thumbnail_1_29.0s.png" data-reel-id="reel_03">
+                <img src="posters/thumbnail_1_29.0s.png" alt="Miniatura rolki 3" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_1.9s.png" alt="Miniatura rolki 4" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 4"
-                data-mp4="videos/🔥🌡️ Temperatura dziś w powietrzu i na scenie CKiS była naprawdę gorąca!Scena Taneczna rozgrzał.mp4"
-                data-poster="posters/thumbnail_1_1.9s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/🔥🌡️ Temperatura dziś w powietrzu i na scenie CKiS była naprawdę gorąca!Scena Taneczna rozgrzał.mp4" data-poster="posters/thumbnail_1_1.9s.png" data-reel-id="reel_04">
+                <img src="posters/thumbnail_1_1.9s.png" alt="Miniatura rolki 4" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_8.3s.png" alt="Miniatura rolki 5" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 5"
-                data-mp4="videos/🕷️ Masz odwagę wziąć ptasznika na rękę i zrobić sobie zdjęcie 📸Do 28 września zapraszamy na Wy.mp4"
-                data-poster="posters/thumbnail_1_8.3s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/🕷️ Masz odwagę wziąć ptasznika na rękę i zrobić sobie zdjęcie 📸Do 28 września zapraszamy na Wy.mp4" data-poster="posters/thumbnail_1_8.3s.png" data-reel-id="reel_05">
+                <img src="posters/thumbnail_1_8.3s.png" alt="Miniatura rolki 5" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="glass reel-card">
-          <div class="reel-frame">
-            <img src="posters/thumbnail_1_6.5s.png" alt="Miniatura rolki 6" loading="lazy">
-            <div class="reel-overlay">
-              <button class="reel-play js-inline-play"
-                aria-label="Odtwórz rolkę 6"
-                data-mp4="videos/Diesel-Fuel-System-Attack-Dirty-Filter-and-Fuel-Problems-1758286114.mp4"
-                data-poster="posters/thumbnail_1_6.5s.png">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
-                </svg>
-              </button>
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="videos/Diesel-Fuel-System-Attack-Dirty-Filter-and-Fuel-Problems-1758286114.mp4" data-poster="posters/thumbnail_1_6.5s.png" data-reel-id="reel_06">
+                <img src="posters/thumbnail_1_6.5s.png" alt="Miniatura rolki 6" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+
         </div>
 
+        <div class="swiper-pagination mt-3"></div>
       </div>
     </div>
   </section>
@@ -497,19 +580,14 @@
     <div class="container">
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
-          <h2 class="section-title mb-2">O mnie</h2>
-          <p class="section-sub">Podmień tekst na finalny opis (2–4 krótkie akapity).</p>
+          <h2 class="section-title mb-2">Kilka słów o mojej osobie</h2>
 
           <div class="glass p-4 mt-3">
-            <p class="mb-3 muted">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent ullamcorper, sem at aliquet facilisis,
-              justo eros vehicula lorem, sed elementum metus lorem vel lacus.
+            <p class="mb-0 muted text-justify">
+              Od ponad 15 lat pracuję w marketingu, produkcji wideo i komunikacji — od dużych agencji i globalnych marek, przez instytucje publiczne, po projekty tworzone od zera. Dziś skupiam się na tworzeniu sprytnych, angażujących rolek, które wyglądają jak małe produkcje filmowe — nawet jeśli powstają w zwykłym biurze, hali czy sklepie. Oprócz rolek tworzę również inne materiały, dzięki czemu z jednego dnia zdjęciowego powstaje spójny zestaw treści do kampanii.
+              Podczas nagrań potrafię wydobyć naturalność i autentyczność z ludzi, którzy na co dzień nie stoją przed kamerą — pracowników, specjalistów i właścicieli firm.
+              Rozumiem zarówno stronę kreatywną, jak i sprzedażową. Tworząc content zawsze wychodzę od celu reklamowego i projektuję materiały tak, żeby go realizowały. Nie tworzę treści, których nikt nie zobaczy, a z myślą o ich realnym wykorzystaniu w kampaniach reklamowych — tak, aby były widoczne, generowały ruch i sprzedawały.
             </p>
-            <ul class="list-unstyled mb-0">
-              <li class="d-flex align-items-start mb-2"><span class="check-dot"></span><span>Strategia, kreacja i performance w jednym</span></li>
-              <li class="d-flex align-items-start mb-2"><span class="check-dot"></span><span>Skupienie na sprzedaży i leadach</span></li>
-              <li class="d-flex align-items-start"><span class="check-dot"></span><span>Współpraca dopasowana do Twojej branży</span></li>
-            </ul>
           </div>
         </div>
 
@@ -523,7 +601,7 @@
     </div>
   </section>
 
-  <!-- KONTAKT (center) -->
+  <!-- KONTAKT -->
   <footer id="kontakt" class="section-pad anchor-offset">
     <div class="container">
       <div class="row g-4 justify-content-center text-center">
@@ -532,24 +610,24 @@
           <p class="muted mb-3">Napisz lub zadzwoń — dopasujemy najlepsze rozwiązanie do Twojej oferty.</p>
 
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <a class="footer-link" href="https://www.instagram.com/szymondomagalski/" target="_blank" rel="noopener"
+            <a class="footer-link js-track" data-track="click_instagram" href="https://www.instagram.com/szymondomagalski/" target="_blank" rel="noopener"
                aria-label="Instagram" title="Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
             </a>
 
-            <a class="footer-link" href="https://www.linkedin.com/in/szymondomagalski/" target="_blank" rel="noopener"
+            <a class="footer-link js-track" data-track="click_linkedin" href="https://www.linkedin.com/in/szymondomagalski/" target="_blank" rel="noopener"
                aria-label="LinkedIn" title="LinkedIn">
               <i class="bi bi-linkedin" aria-hidden="true"></i>
             </a>
 
-            <a class="footer-link" href="tel:+48788221026" aria-label="Telefon" title="Telefon">
+            <a class="footer-link js-track" data-track="click_phone" href="tel:+48788221026" aria-label="Telefon" title="Telefon">
               <i class="bi bi-telephone-fill" aria-hidden="true"></i>
               <span class="d-none d-sm-inline">+48 788 221 026</span>
             </a>
 
-            <a class="footer-link" href="mailto:szymon@7lionsmedia.com" aria-label="E-mail" title="E-mail">
+            <a class="footer-link js-track" data-track="click_email" href="mailto:szymondomagalski@gmail.com" aria-label="E-mail" title="E-mail">
               <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-              <span class="d-none d-sm-inline">szymon@7lionsmedia.com</span>
+              <span class="d-none d-sm-inline">szymondomagalski@gmail.com</span>
             </a>
           </div>
         </div>
@@ -566,56 +644,148 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <script>
     // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Inline reels: video loads only after click
+    // Track klików kontaktowych (Meta Ads)
     document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.js-inline-play');
-      if (!btn) return;
+      const a = e.target.closest('.js-track');
+      if (!a) return;
+      const key = a.getAttribute('data-track') || 'contact_click';
+      fbSafeTrack('Lead', { content_name: key });
+      try { fbq('trackCustom', 'Contact', { content_name: key }); } catch(e){}
+    });
 
-      const frame = btn.closest('.reel-frame');
-      const mp4 = btn.getAttribute('data-mp4');
-      const poster = btn.getAttribute('data-poster');
+    // ------- Reel video lifecycle: autoplay only active slide -------
+    function ensureVideo(frame){
+      let v = frame.querySelector('video');
+      if (v) return v;
 
-      // Pause other videos
-      document.querySelectorAll('.reel-frame video').forEach(v => {
-        if (!v.closest('.reel-frame').isSameNode(frame)) v.pause();
-      });
+      const poster = frame.dataset.poster || "";
+      const mp4 = frame.dataset.mp4 || "";
+      if (!mp4) return null;
 
-      // Toggle if already created
-      const existing = frame.querySelector('video');
-      if (existing) {
-        if (existing.paused) existing.play().catch(()=>{});
-        else existing.pause();
-        return;
-      }
-
-      // Remove overlay
-      const overlay = frame.querySelector('.reel-overlay');
-      if (overlay) overlay.remove();
-
-      // Use current image as fallback poster
       const img = frame.querySelector('img');
-      const fallbackPoster = poster || (img ? img.getAttribute('src') : null);
-      if (img) img.remove();
 
-      const video = document.createElement('video');
-      video.setAttribute('controls', '');
-      video.setAttribute('playsinline', '');
-      video.setAttribute('preload', 'metadata');
-      if (fallbackPoster) video.setAttribute('poster', fallbackPoster);
+      v = document.createElement('video');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('muted', '');
+      v.muted = true;
+      v.loop = true;
+      v.preload = 'metadata';
+      if (poster) v.poster = poster;
 
       const source = document.createElement('source');
       source.src = mp4;
       source.type = 'video/mp4';
+      v.appendChild(source);
 
-      video.appendChild(source);
-      frame.appendChild(video);
+      frame.insertBefore(v, frame.firstChild);
 
-      video.load();
-      video.play().catch(()=>{});
+      v.addEventListener('loadeddata', () => {
+        if (img) img.remove();
+      }, { once: true });
+
+      return v;
+    }
+
+    function pauseAndCleanupAll(exceptFrame){
+      document.querySelectorAll('.reel-frame').forEach(frame => {
+        if (exceptFrame && frame.isSameNode(exceptFrame)) return;
+
+        const v = frame.querySelector('video');
+        if (v) {
+          v.pause();
+          v.remove();
+
+          if (!frame.querySelector('img')) {
+            const poster = frame.dataset.poster || "";
+            if (poster) {
+              const img = document.createElement('img');
+              img.src = poster;
+              img.alt = "Miniatura rolki";
+              img.loading = "lazy";
+              frame.insertBefore(img, frame.firstChild);
+            }
+          }
+        }
+      });
+    }
+
+    function playActive(slideEl){
+      if (!slideEl) return;
+      const frame = slideEl.querySelector('.reel-frame');
+      if (!frame) return;
+
+      pauseAndCleanupAll(frame);
+
+      const v = ensureVideo(frame);
+      if (!v) return;
+
+      v.play().catch(()=>{});
+
+      const rid = frame.dataset.reelId || "reel";
+      fbSafeTrack('ViewContent', { content_type: 'reel', content_name: rid });
+      try { fbq('trackCustom', 'ReelView', { content_name: rid }); } catch(e){}
+    }
+
+    // Unmute / user intent
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.js-unmute');
+      if (!btn) return;
+
+      const frame = btn.closest('.reel-frame');
+      if (!frame) return;
+
+      const v = ensureVideo(frame);
+      if (!v) return;
+
+      v.muted = false;
+      v.setAttribute('controls', '');
+      v.play().catch(()=>{});
+
+      const overlay = frame.querySelector('.reel-overlay');
+      if (overlay) overlay.remove();
+
+      const rid = frame.dataset.reelId || "reel";
+      try { fbq('trackCustom', 'ReelPlay', { content_name: rid }); } catch(e){}
+    });
+
+    // ------- Swiper config: Instagram feel + peek (bardziej mobile-friendly) -------
+    const reelsSwiper = new Swiper('#reelsSwiper', {
+      grabCursor: true,
+      resistanceRatio: 0.7,
+      speed: 520,
+      watchSlidesProgress: true,
+      slidesPerView: 1.07,       // większy peek na mobile
+      spaceBetween: 12,
+
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { prevEl: '#reelsPrev', nextEl: '#reelsNext' },
+
+      breakpoints: {
+        576: { slidesPerView: 1.35, spaceBetween: 14 },
+        768: { slidesPerView: 2.15, spaceBetween: 14 },
+        992: { slidesPerView: 3.15, spaceBetween: 14 },
+      },
+
+      on: {
+        init(sw){ playActive(sw.slides[sw.activeIndex]); },
+        slideChange(sw){ playActive(sw.slides[sw.activeIndex]); },
+        transitionEnd(sw){ playActive(sw.slides[sw.activeIndex]); }
+      }
+    });
+
+    // Safety: pause videos when tab hidden
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        document.querySelectorAll('.reel-frame video').forEach(v => v.pause());
+      } else {
+        playActive(reelsSwiper.slides[reelsSwiper.activeIndex]);
+      }
     });
   </script>
 </body>
