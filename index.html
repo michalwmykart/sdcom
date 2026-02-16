@@ -17,7 +17,10 @@
 
   <style>
     :root{
-      --bg: #0b1220;
+      /* ✅ GRANATOWE, SPÓJNE TŁO */
+      --bg: #071a3a;         /* głęboki granat */
+      --bg-2: #06132c;       /* jeszcze ciemniej do lekkiego gradientu */
+
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.70);
       --border: rgba(255,255,255,.14);
@@ -31,11 +34,17 @@
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
+
+      /* ✅ JEDNOLITE GRANATOWE TŁO (bez “oddzielonych plam”) */
       background:
-        radial-gradient(1000px 500px at 15% 10%, rgba(110,231,255,.18), transparent 55%),
-        radial-gradient(900px 500px at 85% 5%, rgba(167,139,250,.20), transparent 55%),
-        radial-gradient(900px 700px at 50% 90%, rgba(110,231,255,.10), transparent 60%),
-        var(--bg);
+        radial-gradient(1200px 700px at 20% 12%, rgba(59,130,246,.16), transparent 62%),
+        radial-gradient(1200px 700px at 80% 10%, rgba(99,102,241,.12), transparent 64%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 55%, var(--bg) 100%);
+
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+
       overflow-x: hidden;
     }
 
@@ -56,7 +65,7 @@
 
     /* Navbar */
     .navbar{
-      background: rgba(11,18,32,.55);
+      background: rgba(7,19,44,.72);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
@@ -231,7 +240,7 @@
       outline-offset: 3px;
     }
 
-    /* Swiper PRO (mobile-first: mocniejszy “peek” + lepsze swipe) */
+    /* Swiper PRO */
     .reels-swiper{
       overflow: visible;
       padding: 6px 0 28px;
@@ -267,13 +276,13 @@
       border: 1px solid rgba(255,255,255,.10);
       box-shadow: var(--shadow);
       display: block;
-      object-fit: cover;        /* mobile: wypełnia ładnie */
+      object-fit: cover;
       min-height: 260px;
       max-height: 420px;
     }
     @media (min-width: 992px){
       .about-img{
-        object-fit: contain;      /* desktop: bez przycinania */
+        object-fit: contain;
         background: rgba(0,0,0,.18);
         max-height: 520px;
         min-height: 360px;
@@ -289,7 +298,7 @@
       color: rgba(255,255,255,.82);
       text-decoration: none;
       border-radius: 12px;
-      padding: .70rem .85rem; /* większy touch target na mobile */
+      padding: .70rem .85rem;
       display: inline-flex;
       align-items: center;
       gap: .55rem;
@@ -477,7 +486,7 @@
 
       <div class="swiper reels-swiper" id="reelsSwiper">
         <div class="swiper-wrapper">
-
+          <!-- SLIDES (bez zmian) -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/arrosta%20fina%C5%82%20.mp4" data-poster="posters/thumbnail_1_1.4s.png" data-reel-id="reel_01">
@@ -567,7 +576,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <div class="swiper-pagination mt-3"></div>
@@ -754,13 +762,13 @@
       try { fbq('trackCustom', 'ReelPlay', { content_name: rid }); } catch(e){}
     });
 
-    // ------- Swiper config: Instagram feel + peek (bardziej mobile-friendly) -------
+    // ------- Swiper config: Instagram feel + peek -------
     const reelsSwiper = new Swiper('#reelsSwiper', {
       grabCursor: true,
       resistanceRatio: 0.7,
       speed: 520,
       watchSlidesProgress: true,
-      slidesPerView: 1.07,       // większy peek na mobile
+      slidesPerView: 1.07,
       spaceBetween: 12,
 
       pagination: { el: '.swiper-pagination', clickable: true },
