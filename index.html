@@ -7,7 +7,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Dodane 200/300/400/500/600 (żeby były cieńsze warianty) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -17,38 +18,66 @@
 
   <style>
     :root{
-      /* ✅ GRANATOWE, SPÓJNE TŁO */
-      --bg: #071a3a;         /* głęboki granat */
-      --bg-2: #06132c;       /* jeszcze ciemniej do lekkiego gradientu */
+      /* bardziej “rządowy” granat */
+      --bg: #0b1f3b;
+      --bg-2: #08172d;
 
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.70);
+      --muted: rgba(255,255,255,.72);
       --border: rgba(255,255,255,.14);
-      --accent: #6ee7ff;
-      --accent-2: #a78bfa;
+
+      /* przygaszone akcenty */
+      --accent: #7aa6d9;
+      --accent-2: #5f7fb3;
+
       --shadow: 0 10px 30px rgba(0,0,0,.35);
       --radius: 18px;
+
+      /* typografia – globalnie */
+      --ls-base: 0.015em;   /* odstępy między znakami – tekst bazowy */
+      --ls-head: 0.045em;   /* odstępy między znakami – nagłówki */
+      --fw-base: 300;       /* mniej pogrubiona “główna” */
+      --fw-head: 500;       /* mniej bold, bardziej “semi” */
+      --fw-sub: 200;        /* podtekst cieńszy */
     }
 
     html, body { height: 100%; }
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--text);
+      font-weight: var(--fw-base);
+      letter-spacing: var(--ls-base);
 
-      /* ✅ JEDNOLITE GRANATOWE TŁO (bez “oddzielonych plam”) */
-      background:
-        radial-gradient(1200px 700px at 20% 12%, rgba(59,130,246,.16), transparent 62%),
-        radial-gradient(1200px 700px at 80% 10%, rgba(99,102,241,.12), transparent 64%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 55%, var(--bg) 100%);
-
+      /* proste, stonowane tło */
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       background-attachment: fixed;
       background-repeat: no-repeat;
       background-size: cover;
-
       overflow-x: hidden;
     }
 
-    /* Mobile-first spacing (bardziej “tight” na telefonie) */
+    /* Globalne “odchudzenie” i spacing dla typowych elementów */
+    p, li, .nav-link, .icon-pill, .footer-link, .section-sub, .hero-lead, .muted{
+      letter-spacing: var(--ls-base);
+      font-weight: var(--fw-base);
+    }
+
+    /* Podtekst: cieńszy + trochę większe odstępy */
+    .muted, .section-sub, .hero-lead{
+      font-weight: var(--fw-sub);
+      letter-spacing: 0.03em;
+    }
+
+    /* Nagłówki: mniej bold + większe odstępy między znakami */
+    h1,h2,h3,h4,h5,h6,
+    .hero-title, .section-title, .navbar-brand{
+      font-weight: var(--fw-head) !important;
+      letter-spacing: var(--ls-head);
+    }
+
+    /* Bootstrapa “fw-semibold” używasz w navbarze – neutralizujemy, żeby nie wracał bold */
+    .fw-semibold{ font-weight: var(--fw-base) !important; }
+
     .section-pad{ padding: 44px 0; }
     @media (min-width: 768px){
       .section-pad{ padding: 64px 0; }
@@ -63,51 +92,47 @@
     }
     .muted{ color: var(--muted); }
 
-    /* Navbar */
     .navbar{
-      background: rgba(7,19,44,.72);
+      background: rgba(7,19,44,.78);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .navbar-brand{ font-weight: 700; letter-spacing: .2px; line-height: 1.15; }
+    .navbar-brand{ line-height: 1.15; }
     .brand-mark{
       width: 34px; height: 34px;
       border-radius: 12px;
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 12px 28px rgba(167,139,250,.18);
+      box-shadow: 0 12px 28px rgba(122,166,217,.16);
     }
     .nav-link{
-      color: rgba(255,255,255,.80) !important;
-      font-weight: 500;
+      color: rgba(255,255,255,.82) !important;
       border-radius: 999px;
       padding: .55rem .85rem !important;
       -webkit-tap-highlight-color: transparent;
+      font-weight: 300;
+      letter-spacing: 0.04em; /* menu wygląda “czyściej” */
+      text-transform: none;
     }
     .nav-link:hover{ color: var(--text) !important; background: rgba(255,255,255,.06); }
 
     .anchor-offset{ scroll-margin-top: 92px; }
-
-    /* HERO */
     .hero-wrap{ padding-top: 92px; }
 
-    /* Mobile-first typografia */
     .hero-title{
       font-size: clamp(1.35rem, 5.2vw, 2.6rem);
-      font-weight: 700;
       line-height: 1.12;
       margin-bottom: .75rem;
     }
     .hero-lead{
-      font-size: clamp(.98rem, 3.6vw, 1.05rem);
+      font-size: clamp(1.02rem, 3.8vw, 1.10rem);
       color: var(--muted);
       margin-bottom: .85rem;
+      line-height: 1.55;
     }
 
-    /* HERO SLIDER */
     .carousel{ overflow: hidden; }
     .carousel .carousel-item{ padding: 6px 0; }
 
-    /* Mobile: niższe slajdy, mniej “scrolla” */
     .hero-slider-card{
       position: relative;
       overflow: hidden;
@@ -129,8 +154,8 @@
       content:"";
       position:absolute; inset: -2px;
       background:
-        radial-gradient(700px 260px at 10% 0%, rgba(110,231,255,.18), transparent 60%),
-        radial-gradient(600px 260px at 90% 10%, rgba(167,139,250,.20), transparent 60%);
+        radial-gradient(700px 260px at 10% 0%, rgba(122,166,217,.14), transparent 60%),
+        radial-gradient(600px 260px at 90% 10%, rgba(95,127,179,.16), transparent 60%);
       z-index: 0;
     }
     .hero-slider-card > *{ position: relative; z-index: 1; }
@@ -150,10 +175,11 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.88);
-      font-weight: 500;
       margin: .30rem;
       white-space: nowrap;
       font-size: .95rem;
+      letter-spacing: 0.02em;
+      font-weight: 300;
     }
     @media (max-width: 575.98px){
       .icon-pill{ font-size: .90rem; }
@@ -175,15 +201,12 @@
     }
     .carousel-indicators .active{ opacity: .9; }
 
-    /* Sections */
     .section-title{
-      font-weight: 700;
-      letter-spacing: .2px;
+      letter-spacing: var(--ls-head);
       font-size: clamp(1.22rem, 3.8vw, 1.8rem);
     }
     .section-sub{ color: var(--muted); margin-top: .35rem; }
 
-    /* Justify text */
     .text-justify{
       text-align: justify;
       text-justify: inter-word;
@@ -236,7 +259,7 @@
     }
     .reel-play svg{ width: 24px; height: 24px; }
     .reel-play:focus-visible{
-      outline: 3px solid rgba(110,231,255,.35);
+      outline: 3px solid rgba(122,166,217,.35);
       outline-offset: 3px;
     }
 
@@ -269,7 +292,7 @@
     .swiper-pagination-bullet{ width: 8px; height: 8px; opacity: .35; }
     .swiper-pagination-bullet-active{ opacity: .9; }
 
-    /* ABOUT: Mobile ok + desktop no-crop */
+    /* ABOUT */
     .about-img{
       width: 100%;
       border-radius: var(--radius);
@@ -289,13 +312,12 @@
       }
     }
 
-    /* Footer */
     footer{
       border-top: 1px solid rgba(255,255,255,.08);
       background: rgba(0,0,0,.12);
     }
     .footer-link{
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.84);
       text-decoration: none;
       border-radius: 12px;
       padding: .70rem .85rem;
@@ -305,6 +327,8 @@
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
       -webkit-tap-highlight-color: transparent;
+      letter-spacing: 0.03em;
+      font-weight: 300;
     }
     .footer-link:hover{ color: #fff; background: rgba(255,255,255,.07); }
     .footer-link i{ font-size: 1.15rem; line-height: 1; }
@@ -486,11 +510,12 @@
 
       <div class="swiper reels-swiper" id="reelsSwiper">
         <div class="swiper-wrapper">
-          <!-- SLIDES (bez zmian) -->
+
+          <!-- 01 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/arrosta%20fina%C5%82%20.mp4" data-poster="posters/thumbnail_1_1.4s.png" data-reel-id="reel_01">
-                <img src="posters/thumbnail_1_1.4s.png" alt="Miniatura rolki 1" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/🍦 Mini Freezer Gelato Chef 5L Nemox – profesjonalne lody w Twojej kawiarni, lodziarni i domu!✅ .mp4" data-poster="posters/thumbnail_1_2.1s.png" data-reel-id="reel_01">
+                <img src="posters/thumbnail_1_2.1s.png" alt="Miniatura rolki 1" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -502,10 +527,11 @@
             </div>
           </div>
 
+          <!-- 02 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/🍦 Mini Freezer Gelato Chef 5L Nemox – profesjonalne lody w Twojej kawiarni, lodziarni i domu!✅ .mp4" data-poster="posters/thumbnail_1_2.1s.png" data-reel-id="reel_02">
-                <img src="posters/thumbnail_1_2.1s.png" alt="Miniatura rolki 2" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/🚀 🪵Nowy magazyn i nowa platforma B2B – Komplex Market rośnie razem z Wami! Więcej miejsca to w.mp4" data-poster="posters/thumbnail_1_4.5s.png" data-reel-id="reel_02">
+                <img src="posters/thumbnail_1_4.5s.png" alt="Miniatura rolki 2" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -517,10 +543,11 @@
             </div>
           </div>
 
+          <!-- 03 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/🎉 Contur Mix – 40 lat z komiksem! 🎨📍 18.07–31.08.2025 - Galeria CKiS, SkierniewiceZapraszamy .mp4" data-poster="posters/thumbnail_1_29.0s.png" data-reel-id="reel_03">
-                <img src="posters/thumbnail_1_29.0s.png" alt="Miniatura rolki 3" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/🎥 Ostatnio odwiedził nas Master Instructore z włoskiej Scuola Italiana Pizzaioli! 🇮🇹🍕Rok tem.mp4" data-poster="posters/thumbnail_1_9.8s.png" data-reel-id="reel_03">
+                <img src="posters/thumbnail_1_9.8s.png" alt="Miniatura rolki 3" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -532,10 +559,11 @@
             </div>
           </div>
 
+          <!-- 04 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/🔥🌡️ Temperatura dziś w powietrzu i na scenie CKiS była naprawdę gorąca!Scena Taneczna rozgrzał.mp4" data-poster="posters/thumbnail_1_1.9s.png" data-reel-id="reel_04">
-                <img src="posters/thumbnail_1_1.9s.png" alt="Miniatura rolki 4" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/A dyg.mp4" data-poster="posters/thumbnail_1_1.6s.png" data-reel-id="reel_04">
+                <img src="posters/thumbnail_1_1.6s.png" alt="Miniatura rolki 4" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -547,10 +575,11 @@
             </div>
           </div>
 
+          <!-- 05 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/🕷️ Masz odwagę wziąć ptasznika na rękę i zrobić sobie zdjęcie 📸Do 28 września zapraszamy na Wy.mp4" data-poster="posters/thumbnail_1_8.3s.png" data-reel-id="reel_05">
-                <img src="posters/thumbnail_1_8.3s.png" alt="Miniatura rolki 5" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/🎉 Contur Mix – 40 lat z komiksem! 🎨📍 18.07–31.08.2025 - Galeria CKiS, SkierniewiceZapraszamy .mp4" data-poster="posters/thumbnail_1_29.0s.png" data-reel-id="reel_05">
+                <img src="posters/thumbnail_1_29.0s.png" alt="Miniatura rolki 5" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -562,10 +591,11 @@
             </div>
           </div>
 
+          <!-- 06 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="videos/Diesel-Fuel-System-Attack-Dirty-Filter-and-Fuel-Problems-1758286114.mp4" data-poster="posters/thumbnail_1_6.5s.png" data-reel-id="reel_06">
-                <img src="posters/thumbnail_1_6.5s.png" alt="Miniatura rolki 6" loading="lazy">
+              <div class="reel-frame" data-mp4="Efni.mp4" data-poster="posters/thumbnail_1_19.8s.png" data-reel-id="reel_06">
+                <img src="posters/thumbnail_1_19.8s.png" alt="Miniatura rolki 6 -> pobrać rolke z sigep" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -576,6 +606,151 @@
               </div>
             </div>
           </div>
+
+          <!-- 07 (sigep) -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_06">
+                <img src="posters/placeholder-9x16.png" alt="Miniatura rolki 7 -> pobrać rolke z sigep" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 08 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="arrosta finał .mp4" data-poster="posters/thumbnail_1_1.4s.png" data-reel-id="reel_08">
+                <img src="posters/thumbnail_1_1.4s.png" alt="Miniatura rolki 8" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 09 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="Arek 2_5.mp4" data-poster="posters/thumbnail_1_18.8s.png" data-reel-id="reel_09">
+                <img src="posters/thumbnail_1_18.8s.png" alt="Miniatura rolki 9" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 10 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="wystawa lego 3.mp4" data-poster="posters/thumbnail_1_7.2s.png" data-reel-id="reel_10">
+                <img src="posters/thumbnail_1_7.2s.png" alt="Miniatura rolki 10" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 11 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="Diesel-Fuel-System-Attack-Dirty-Filter-and-Fuel-Problems-1758286114.mp4" data-poster="posters/thumbnail_1_6.5s.png" data-reel-id="reel_11">
+                <img src="posters/thumbnail_1_6.5s.png" alt="Miniatura rolki 11" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 12 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="🔥🌡️ Temperatura dziś w powietrzu i na scenie CKiS była naprawdę gorąca!Scena Taneczna rozgrzał.mp4" data-poster="posters/thumbnail_1_1.9s.png" data-reel-id="reel_12">
+                <img src="posters/thumbnail_1_1.9s.png" alt="Miniatura rolki 12" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 13 (uzupełnij) -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_13">
+                <img src="posters/placeholder-9x16.png" alt="Miniatura rolki 13" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 14 (uzupełnij) -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_14">
+                <img src="posters/placeholder-9x16.png" alt="Miniatura rolki 14" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 15 -->
+          <div class="swiper-slide">
+            <div class="glass reel-card">
+              <div class="reel-frame" data-mp4="" data-poster="posters/thumbnail_1_8.3s.png" data-reel-id="reel_15">
+                <img src="posters/9:16.png" alt="Miniatura rolki 15" loading="lazy">
+                <div class="reel-overlay">
+                  <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div class="swiper-pagination mt-3"></div>
@@ -621,11 +796,13 @@
             <a class="footer-link js-track" data-track="click_instagram" href="https://www.instagram.com/szymondomagalski/" target="_blank" rel="noopener"
                aria-label="Instagram" title="Instagram">
               <i class="bi bi-instagram" aria-hidden="true"></i>
+              <span class="d-none d-sm-inline">@szymondomagalski</span>
             </a>
 
             <a class="footer-link js-track" data-track="click_linkedin" href="https://www.linkedin.com/in/szymondomagalski/" target="_blank" rel="noopener"
                aria-label="LinkedIn" title="LinkedIn">
               <i class="bi bi-linkedin" aria-hidden="true"></i>
+              <span class="d-none d-sm-inline">/in/szymondomagalski</span>
             </a>
 
             <a class="footer-link js-track" data-track="click_phone" href="tel:+48788221026" aria-label="Telefon" title="Telefon">
