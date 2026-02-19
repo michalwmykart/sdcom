@@ -7,49 +7,33 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Dodane cieńsze wagi -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
   <style>
     :root{
-      /* bardziej “rządowy” granat */
-      --bg: #0b1f3b;
-      --bg-2: #08172d;
-
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --border: rgba(255,255,255,.14);
-
-      /* przygaszone akcenty */
-      --accent: #7aa6d9;
-      --accent-2: #5f7fb3;
-
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-
-      /* TYPO */
-      --fw-base: 300;
-      --fw-head: 500;
-      --fw-sub: 200;
-      --ls-base: 0.015em;
-      --ls-head: 0.045em;
-      --ls-sub: 0.03em;
+      --bg:#0b1f3b;
+      --bg-2:#08172d;
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.70);
+      --border:rgba(255,255,255,.14);
+      --accent:#7aa6d9;
+      --accent-2:#5f7fb3;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:18px;
     }
 
+    html{ font-size:16px; }
     html, body { height: 100%; }
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
       color: var(--text);
-      font-weight: var(--fw-base);
-      letter-spacing: var(--ls-base);
-
-      /* proste, stonowane tło */
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       background-attachment: fixed;
       background-repeat: no-repeat;
@@ -58,9 +42,7 @@
     }
 
     .section-pad{ padding: 44px 0; }
-    @media (min-width: 768px){
-      .section-pad{ padding: 64px 0; }
-    }
+    @media (min-width: 768px){ .section-pad{ padding: 64px 0; } }
 
     .glass{
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
@@ -69,29 +51,14 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
-    .muted{ color: var(--muted); font-weight: var(--fw-sub); letter-spacing: var(--ls-sub); }
-
-    /* typografia globalna */
-    p, li, .nav-link, .icon-pill, .footer-link{
-      font-weight: var(--fw-base);
-      letter-spacing: var(--ls-base);
-    }
-
-    h1,h2,h3,h4,h5,h6,
-    .section-title, .navbar-brand, .hero-title{
-      font-weight: var(--fw-head);
-      letter-spacing: var(--ls-head);
-    }
-
-    /* Bootstrap fw-semibold neutralizujemy, żeby nie robił “tłustego” brandu */
-    .fw-semibold{ font-weight: var(--fw-base) !important; }
+    .muted{ color: var(--muted); }
 
     .navbar{
       background: rgba(7,19,44,.78);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
-    .navbar-brand{ line-height: 1.15; }
+    .navbar-brand{ font-weight: 700; letter-spacing: .2px; line-height: 1.15; }
     .brand-mark{
       width: 34px; height: 34px;
       border-radius: 12px;
@@ -99,9 +66,8 @@
       box-shadow: 0 12px 28px rgba(122,166,217,.16);
     }
     .nav-link{
-      color: rgba(255,255,255,.82) !important;
-      font-weight: 300;
-      letter-spacing: 0.04em;
+      color: rgba(255,255,255,.80) !important;
+      font-weight: 500;
       border-radius: 999px;
       padding: .55rem .85rem !important;
       -webkit-tap-highlight-color: transparent;
@@ -111,19 +77,17 @@
     .anchor-offset{ scroll-margin-top: 92px; }
     .hero-wrap{ padding-top: 92px; }
 
-    /* SLIDER: mniejsze odległości między wierszami */
     .hero-title{
-      font-size: clamp(1.35rem, 5.2vw, 2.6rem);
-      line-height: 1.08;      /* ciaśniej */
-      margin-bottom: .5rem;   /* mniej pod nagłówkiem */
+      font-size: clamp(32px, 4.6vw, 40px);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: .75rem;
     }
     .hero-lead{
-      font-size: clamp(1.00rem, 3.6vw, 1.08rem);
+      font-size: clamp(18px, 2.2vw, 20px);
+      line-height: 1.6;
       color: var(--muted);
-      font-weight: var(--fw-sub);
-      letter-spacing: var(--ls-sub);
-      line-height: 1.35;      /* ciaśniej między wierszami */
-      margin-bottom: .55rem;  /* mniej między akapitami */
+      margin-bottom: .85rem;
     }
 
     .carousel{ overflow: hidden; }
@@ -139,12 +103,8 @@
       justify-content: center;
       text-align: center;
     }
-    @media (min-width: 576px){
-      .hero-slider-card{ padding: 22px; min-height: 480px; }
-    }
-    @media (min-width: 992px){
-      .hero-slider-card{ padding: 28px; min-height: 520px; }
-    }
+    @media (min-width: 576px){ .hero-slider-card{ padding: 22px; min-height: 480px; } }
+    @media (min-width: 992px){ .hero-slider-card{ padding: 28px; min-height: 520px; } }
 
     .hero-slider-card:before{
       content:"";
@@ -155,14 +115,7 @@
       z-index: 0;
     }
     .hero-slider-card > *{ position: relative; z-index: 1; }
-
-    /* dodatkowo: jeszcze ciaśniej w sliderze dla paragrafów */
-    .hero-slider-card p{ margin-bottom: .55rem; }
-
-    .hero-slide-inner{
-      width: min(900px, 100%);
-      margin-inline: auto;
-    }
+    .hero-slide-inner{ width: min(900px, 100%); margin-inline: auto; }
 
     .icon-pill{
       display: inline-flex;
@@ -174,20 +127,14 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.88);
-      font-weight: 300;
+      font-weight: 500;
       margin: .30rem;
       white-space: nowrap;
-      font-size: .95rem;
-      letter-spacing: 0.02em;
-    }
-    @media (max-width: 575.98px){
-      .icon-pill{ font-size: .90rem; }
+      font-size: 1rem;
     }
 
     .carousel-control-prev, .carousel-control-next{ width: 12%; }
-    @media (min-width: 992px){
-      .carousel-control-prev, .carousel-control-next{ width: 10%; }
-    }
+    @media (min-width: 992px){ .carousel-control-prev, .carousel-control-next{ width: 10%; } }
     .carousel-control-prev-icon, .carousel-control-next-icon{
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
       opacity: .85;
@@ -201,13 +148,16 @@
     .carousel-indicators .active{ opacity: .9; }
 
     .section-title{
-      font-size: clamp(1.22rem, 3.8vw, 1.8rem);
+      font-weight: 700;
+      letter-spacing: .2px;
+      font-size: clamp(24px, 3.2vw, 30px);
+      line-height: 1.2;
     }
     .section-sub{
       color: var(--muted);
       margin-top: .35rem;
-      font-weight: var(--fw-sub);
-      letter-spacing: var(--ls-sub);
+      font-size: 1.125rem;
+      line-height: 1.6;
     }
 
     .text-justify{
@@ -216,8 +166,33 @@
       hyphens: auto;
     }
 
-    /* Reel card */
+    /* Swiper common */
+    .swiper-nav{
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+      align-items:center;
+    }
+    .swiper-btn{
+      width: 44px; height: 44px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      color: rgba(255,255,255,.9);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      user-select:none;
+    }
+    .swiper-btn:hover{ background: rgba(255,255,255,.08); }
+    .swiper-pagination-bullet{ width: 8px; height: 8px; opacity: .35; }
+    .swiper-pagination-bullet-active{ opacity: .9; }
+
+    /* ROLKI (9:16) */
+    .reels-swiper{ overflow: visible; padding: 6px 0 28px; }
+    .reels-swiper .swiper-slide{ height: auto; }
     .reel-card{ padding: 12px; }
+
     .reel-frame{
       position: relative;
       width: 100%;
@@ -261,39 +236,56 @@
       -webkit-tap-highlight-color: transparent;
     }
     .reel-play svg{ width: 24px; height: 24px; }
-    .reel-play:focus-visible{
-      outline: 3px solid rgba(122,166,217,.35);
-      outline-offset: 3px;
-    }
+    .reel-play:focus-visible{ outline: 3px solid rgba(122,166,217,.35); outline-offset: 3px; }
 
-    /* Swiper PRO */
-    .reels-swiper{
-      overflow: visible;
-      padding: 6px 0 28px;
-    }
-    .reels-swiper .swiper-slide{ height: auto; }
+    /* DŁUŻSZE FILMY (16:9) */
+    .films-swiper{ overflow: visible; padding: 6px 0 28px; }
+    .films-swiper .swiper-slide{ height: auto; }
 
-    .swiper-nav{
-      display:flex;
-      gap:10px;
-      justify-content:flex-end;
-      align-items:center;
+    .film-card{ padding: 14px; }
+    .film-frame{
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.22);
+      transform: translateZ(0);
     }
-    .swiper-btn{
-      width: 44px; height: 44px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.9);
-      display:grid;
-      place-items:center;
-      cursor:pointer;
-      user-select:none;
+    .film-frame img, .film-frame video{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
-    .swiper-btn:hover{ background: rgba(255,255,255,.08); }
-
-    .swiper-pagination-bullet{ width: 8px; height: 8px; opacity: .35; }
-    .swiper-pagination-bullet-active{ opacity: .9; }
+    .film-frame:after{
+      content:"";
+      position:absolute; inset: 0;
+      background:
+        radial-gradient(520px 260px at 70% 85%, rgba(0,0,0,.38), transparent 60%),
+        radial-gradient(420px 220px at 20% 20%, rgba(255,255,255,.08), transparent 60%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .film-overlay{
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      z-index: 3;
+    }
+    .film-play{
+      width: 62px; height: 62px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.35);
+      display: grid; place-items: center;
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .film-play svg{ width: 26px; height: 26px; }
 
     /* ABOUT */
     .about-img{
@@ -320,7 +312,7 @@
       background: rgba(0,0,0,.12);
     }
     .footer-link{
-      color: rgba(255,255,255,.84);
+      color: rgba(255,255,255,.82);
       text-decoration: none;
       border-radius: 12px;
       padding: .70rem .85rem;
@@ -330,8 +322,6 @@
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
       -webkit-tap-highlight-color: transparent;
-      letter-spacing: 0.03em;
-      font-weight: 300;
     }
     .footer-link:hover{ color: #fff; background: rgba(255,255,255,.07); }
     .footer-link i{ font-size: 1.15rem; line-height: 1; }
@@ -391,7 +381,8 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#realizacje">Realizacje</a></li>
+          <li class="nav-item"><a class="nav-link" href="#rolki">Rolki</a></li>
+          <li class="nav-item"><a class="nav-link" href="#dluzsze-filmy">Dłuższe filmy</a></li>
           <li class="nav-item"><a class="nav-link" href="#o-mnie">O mnie</a></li>
           <li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
         </ul>
@@ -399,7 +390,7 @@
     </div>
   </nav>
 
-  <!-- HERO SLIDER -->
+  <!-- HERO -->
   <header id="home" class="hero-wrap anchor-offset">
     <div class="container section-pad">
       <div id="offerCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000">
@@ -410,25 +401,16 @@
         </div>
 
         <div class="carousel-inner">
-
           <div class="carousel-item active">
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
                 <h1 class="hero-title">Sprzedaż Twoich produktów i usług poprzez kampanie leadowe</h1>
-
                 <p class="hero-lead">
                   Tworzę materiały reklamowe dopasowane do Twojej oferty – krótkie filmy, zdjęcia, grafiki.
                   Uruchamiam efektywną kampanię reklamową.
                 </p>
-
-                <p class="hero-lead">
-                  Pozyskuję leady, czyli kontakty do realnie zainteresowanych klientów:
-                </p>
-
-                <p class="muted mb-0 mt-2">
-                  Ty kontaktujesz się z nimi i zamykasz sprzedaż.
-                </p>
-
+                <p class="hero-lead">Pozyskuję leady, czyli kontakty do realnie zainteresowanych klientów:</p>
+                <p class="muted mb-0 mt-2">Ty kontaktujesz się z nimi i zamykasz sprzedaż.</p>
                 <div class="d-flex flex-wrap justify-content-center">
                   <span class="icon-pill">📞 telefon</span>
                   <span class="icon-pill">📧 e-mail</span>
@@ -442,16 +424,11 @@
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
                 <h2 class="hero-title">Content / Prowadzenie Social Media / Kampanie</h2>
-
-                <p class="hero-lead">
-                  Tworzę skuteczny content na social media: rolki wideo, zdjęcia oraz animacje.
-                </p>
-
+                <p class="hero-lead">Tworzę skuteczny content na social media: rolki wideo, zdjęcia oraz animacje.</p>
                 <p class="hero-lead">
                   Efektywnie wspieram content kampaniami reklamowymi nastawionymi na sprzedaż i pozyskiwanie leadów –
                   zarówno w formie działań doraźnych, jak i długofalowych kampanii sprzedażowych.
                 </p>
-
                 <p class="hero-lead mb-0">
                   Mam <strong>15 lat doświadczenia</strong>, potwierdzone sukcesy oraz dziesiątki zrealizowanych projektów
                   dla różnych branż. Na życzenie klienta oferuję również bieżące prowadzenie profili w social mediach.
@@ -464,17 +441,14 @@
             <div class="glass hero-slider-card">
               <div class="hero-slide-inner">
                 <h2 class="hero-title">Szkolenia wideo i Szkolenia z Social Media</h2>
-
                 <p class="hero-lead">
                   Prowadzę praktyczne szkolenia wideo oraz z social media – zarówno ogólne, jak i przygotowane indywidualnie
                   pod konkretną branżę i potrzeby firmy.
                 </p>
-
                 <p class="hero-lead">
                   Uczestnicy zdobywają realne umiejętności tworzenia contentu, prowadzenia profili oraz skutecznych działań
                   marketingowych w internecie.
                 </p>
-
                 <p class="hero-lead mb-0">
                   Warsztaty skupiają się przede wszystkim na praktyce i pracy na realnych przykładach, dzięki czemu uczestnicy
                   od razu zdobywają użyteczne umiejętności.
@@ -482,7 +456,6 @@
               </div>
             </div>
           </div>
-
         </div>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#offerCarousel" data-bs-slide="prev" aria-label="Poprzedni slajd">
@@ -501,7 +474,7 @@
       <div class="row align-items-end g-3 mb-3">
         <div class="col-lg-8">
           <h2 class="section-title mb-1">Najlepsze realizacje / rolki</h2>
-          <p class="section-sub mb-0">Swipe jak Instagram + peek. Autoplay tylko aktywnego slajdu.</p>
+          <p class="section-sub mb-0">Zobacz materiały, które pomagały zdobywać klientów i zwiększać zainteresowanie ich ofertą.</p>
         </div>
         <div class="col-lg-4 d-none d-lg-flex justify-content-end">
           <div class="swiper-nav">
@@ -597,7 +570,7 @@
           <!-- 06 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="Efni.mp4" data-poster="posters/thumbnail_1_19.8s.png" data-reel-id="reel_06">
+              <div class="reel-frame" data-mp4="videos/Efni.mp4" data-poster="posters/thumbnail_1_19.8s.png" data-reel-id="reel_06">
                 <img src="posters/thumbnail_1_19.8s.png" alt="Miniatura rolki 6 -> pobrać rolke z sigep" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
@@ -613,8 +586,8 @@
           <!-- 07 (sigep) -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_06">
-                <img src="posters/placeholder-9x16.png" alt="Miniatura rolki 7 -> pobrać rolke z sigep" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/Sigep Oryginał .mov" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_06">
+                <img src="posters/thumbnail_1_0.0s_s.png" alt="Miniatura rolki 7 -> pobrać rolke z sigep" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -709,8 +682,8 @@
           <!-- 13 (uzupełnij) -->
           <div class="swiper-slide">
             <div class="glass reel-card">
-              <div class="reel-frame" data-mp4="" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_13">
-                <img src="posters/placeholder-9x16.png" alt="Miniatura rolki 13" loading="lazy">
+              <div class="reel-frame" data-mp4="videos/WOSP 4_2.mp4" data-poster="posters/placeholder-9x16.png" data-reel-id="reel_13">
+                <img src="posters/thumbnail_1_2.3s.png" alt="Miniatura rolki 13" loading="lazy">
                 <div class="reel-overlay">
                   <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -761,27 +734,162 @@
     </div>
   </section>
 
+<!-- DŁUŻSZE FILMY (slider, 5 filmów, 16:9) -->
+<section id="dluzsze-filmy" class="section-pad anchor-offset">
+  <div class="container">
+    <div class="row align-items-end g-3 mb-3">
+      <div class="col-lg-8">
+        <h2 class="section-title mb-1">Dłuższe filmy</h2>
+        <p class="section-sub mb-0">
+          Produkcje 16:9 — krótkie case studies, relacje i filmy promocyjne.
+        </p>
+      </div>
+      <div class="col-lg-4 d-none d-lg-flex justify-content-end">
+        <div class="swiper-nav">
+          <div class="swiper-btn" id="filmsPrev" aria-label="Poprzednia"><i class="bi bi-chevron-left"></i></div>
+          <div class="swiper-btn" id="filmsNext" aria-label="Następna"><i class="bi bi-chevron-right"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="swiper films-swiper" id="filmsSwiper">
+      <div class="swiper-wrapper">
+
+        <!-- 01 -->
+        <div class="swiper-slide">
+          <article class="glass film-card film-card--rich">
+            <div class="film-frame"
+                 data-mp4="videos/_Dłuższe filmy/Komplex Market Showroom Hurtownia Drewna.mp4"
+                 data-poster="posters/film-01.png"
+                 data-film-id="film_01">
+              <img src="posters/_Dłuższe filmy/thumbnail_1_0.3s.png" alt="Miniatura filmu: Komplex Market Showroom" loading="lazy">
+              <div class="film-overlay">
+                <button class="film-play js-film-play" aria-label="Odtwórz film">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="film-badge">16:9</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 02 -->
+        <div class="swiper-slide">
+          <article class="glass film-card film-card--rich">
+            <div class="film-frame"
+                 data-mp4="videos/_Dłuższe filmy/Polka XXI_v_4.mp4"
+                 data-poster="posters/film-01.png"
+                 data-film-id="film_01">
+              <img src="posters/thumbnail_1_12.3s.png" alt="Miniatura filmu: Komplex Market Showroom" loading="lazy">
+              <div class="film-overlay">
+                <button class="film-play js-film-play" aria-label="Odtwórz film">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="film-badge">16:9</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 03 -->
+        <div class="swiper-slide">
+          <article class="glass film-card film-card--rich">
+            <div class="film-frame"
+                 data-mp4="videos/_Dłuższe filmy/Pro Edu.mp4"
+                 data-poster="posters/film-01.png"
+                 data-film-id="film_01">
+              <img src="posters/thumbnail_1_8.1s.png" alt="Miniatura filmu: Komplex Market Showroom" loading="lazy">
+              <div class="film-overlay">
+                <button class="film-play js-film-play" aria-label="Odtwórz film">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="film-badge">16:9</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 04 -->
+        <div class="swiper-slide">
+          <article class="glass film-card film-card--rich">
+            <div class="film-frame"
+                 data-mp4="videos/_Dłuższe filmy/Stadnio Narodowy WWE.mp4"
+                 data-poster="posters/film-01.png"
+                 data-film-id="film_01">
+              <img src="posters/thumbnail_1_0.0s.png" alt="Miniatura filmu: Komplex Market Showroom" loading="lazy">
+              <div class="film-overlay">
+                <button class="film-play js-film-play" aria-label="Odtwórz film">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="film-badge">16:9</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 05 -->
+        <div class="swiper-slide">
+          <article class="glass film-card film-card--rich">
+            <div class="film-frame"
+                 data-mp4="videos/_Dłuższe filmy/Zoo Łódz.mp4"
+                 data-poster="posters/film-01.png"
+                 data-film-id="film_01">
+              <img src="posters/thumbnail_1_1.5s.png" alt="Miniatura filmu: Komplex Market Showroom" loading="lazy">
+              <div class="film-overlay">
+                <button class="film-play js-film-play" aria-label="Odtwórz film">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <span class="film-badge">16:9</span>
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination mt-3" id="filmsPagination"></div>
+
+      <!-- mobilne strzałki (opcjonalnie, widać tylko <lg) -->
+      <div class="d-lg-none mt-3 d-flex justify-content-center gap-2">
+        <button class="swiper-btn" id="filmsPrevM" aria-label="Poprzednia"><i class="bi bi-chevron-left"></i></button>
+        <button class="swiper-btn" id="filmsNextM" aria-label="Następna"><i class="bi bi-chevron-right"></i></button>
+      </div>
+    </div>
+  </div>
+</section>
+
   <!-- O MNIE -->
   <section id="o-mnie" class="section-pad anchor-offset">
     <div class="container">
       <div class="row g-4 align-items-center">
         <div class="col-lg-6">
           <h2 class="section-title mb-2">Kilka słów o mojej osobie</h2>
-
           <div class="glass p-4 mt-3">
             <p class="mb-0 muted text-justify">
-              Od ponad 15 lat pracuję w marketingu, produkcji wideo i komunikacji — od dużych agencji i globalnych marek, przez instytucje publiczne, po projekty tworzone od zera. Dziś skupiam się na tworzeniu sprytnych, angażujących rolek, które wyglądają jak małe produkcje filmowe — nawet jeśli powstają w zwykłym biurze, hali czy sklepie. Oprócz rolek tworzę również inne materiały, dzięki czemu z jednego dnia zdjęciowego powstaje spójny zestaw treści do kampanii.
-              Podczas nagrań potrafię wydobyć naturalność i autentyczność z ludzi, którzy na co dzień nie stoją przed kamerą — pracowników, specjalistów i właścicieli firm.
-              Rozumiem zarówno stronę kreatywną, jak i sprzedażową. Tworząc content zawsze wychodzę od celu reklamowego i projektuję materiały tak, żeby go realizowały. Nie tworzę treści, których nikt nie zobaczy, a z myślą o ich realnym wykorzystaniu w kampaniach reklamowych — tak, aby były widoczne, generowały ruch i sprzedawały.
+              Od ponad 15 lat pracuję w marketingu, produkcji wideo i komunikacji — od dużych agencji i globalnych marek,
+              przez instytucje publiczne, po projekty tworzone od zera. Dziś skupiam się na tworzeniu sprytnych,
+              angażujących rolek, które wyglądają jak małe produkcje filmowe — nawet jeśli powstają w zwykłym biurze,
+              hali czy sklepie. Oprócz rolek tworzę również inne materiały, dzięki czemu z jednego dnia zdjęciowego
+              powstaje spójny zestaw treści do kampanii. Podczas nagrań potrafię wydobyć naturalność i autentyczność
+              z ludzi, którzy na co dzień nie stoją przed kamerą — pracowników, specjalistów i właścicieli firm.
+              Rozumiem zarówno stronę kreatywną, jak i sprzedażową. Tworząc content zawsze wychodzę od celu reklamowego
+              i projektuję materiały tak, żeby go realizowały.
             </p>
           </div>
         </div>
 
         <div class="col-lg-6">
-          <img class="about-img"
-            src="foto Szymona.jpg"
-            alt="Zdjęcie Szymona"
-            loading="lazy" />
+          <img class="about-img" src="foto Szymona.jpg" alt="Zdjęcie Szymona" loading="lazy" />
         </div>
       </div>
     </div>
@@ -793,27 +901,25 @@
       <div class="row g-4 justify-content-center text-center">
         <div class="col-lg-6">
           <h2 class="section-title mb-2">Kontakt</h2>
-          <p class="muted mb-3">Napisz lub zadzwoń — dopasujemy najlepsze rozwiązanie do Twojej oferty.</p>
+          <p class="section-sub mb-3">Napisz lub zadzwoń — dopasujemy najlepsze rozwiązanie do Twojej oferty.</p>
 
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <a class="footer-link js-track" data-track="click_instagram" href="https://www.instagram.com/szymondomagalski/" target="_blank" rel="noopener"
-               aria-label="Instagram" title="Instagram">
+            <a class="footer-link js-track" data-track="click_instagram" href="https://www.instagram.com/szymondomagalski/" target="_blank" rel="noopener">
               <i class="bi bi-instagram" aria-hidden="true"></i>
               <span class="d-none d-sm-inline">@szymondomagalski</span>
             </a>
 
-            <a class="footer-link js-track" data-track="click_linkedin" href="https://www.linkedin.com/in/szymondomagalski/" target="_blank" rel="noopener"
-               aria-label="LinkedIn" title="LinkedIn">
+            <a class="footer-link js-track" data-track="click_linkedin" href="https://www.linkedin.com/in/szymondomagalski/" target="_blank" rel="noopener">
               <i class="bi bi-linkedin" aria-hidden="true"></i>
               <span class="d-none d-sm-inline">/in/szymondomagalski</span>
             </a>
 
-            <a class="footer-link js-track" data-track="click_phone" href="tel:+48788221026" aria-label="Telefon" title="Telefon">
+            <a class="footer-link js-track" data-track="click_phone" href="tel:+48788221026">
               <i class="bi bi-telephone-fill" aria-hidden="true"></i>
               <span class="d-none d-sm-inline">+48 788 221 026</span>
             </a>
 
-            <a class="footer-link js-track" data-track="click_email" href="mailto:szymondomagalski@gmail.com" aria-label="E-mail" title="E-mail">
+            <a class="footer-link js-track" data-track="click_email" href="mailto:szymondomagalski@gmail.com">
               <i class="bi bi-envelope-fill" aria-hidden="true"></i>
               <span class="d-none d-sm-inline">szymondomagalski@gmail.com</span>
             </a>
@@ -822,7 +928,6 @@
       </div>
 
       <hr class="my-4" style="border-color: rgba(255,255,255,.10);">
-
       <div class="d-flex justify-content-center text-center muted small">
         <span>© <span id="year"></span> Szymon Domagalski. Wszelkie prawa zastrzeżone.</span>
       </div>
@@ -831,7 +936,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
@@ -847,8 +951,8 @@
       try { fbq('trackCustom', 'Contact', { content_name: key }); } catch(e){}
     });
 
-    // ------- Reel video lifecycle: autoplay only active slide -------
-    function ensureVideo(frame){
+    // ---------------- ROLKI: auto-next po ended ----------------
+    function ensureReelVideo(frame){
       let v = frame.querySelector('video');
       if (v) return v;
 
@@ -860,9 +964,9 @@
 
       v = document.createElement('video');
       v.setAttribute('playsinline', '');
-      v.setAttribute('muted', '');
       v.muted = true;
-      v.loop = true;
+      v.setAttribute('muted', '');
+      v.loop = false;
       v.preload = 'metadata';
       if (poster) v.poster = poster;
 
@@ -880,39 +984,72 @@
       return v;
     }
 
-    function pauseAndCleanupAll(exceptFrame){
+    function restoreReelPoster(frame){
+      if (frame.querySelector('img')) return;
+      const poster = frame.dataset.poster || "";
+      if (!poster) return;
+      const img = document.createElement('img');
+      img.src = poster;
+      img.alt = "Miniatura rolki";
+      img.loading = "lazy";
+      frame.insertBefore(img, frame.firstChild);
+    }
+
+    function ensureReelOverlay(frame){
+      if (frame.querySelector('.reel-overlay')) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'reel-overlay';
+      overlay.innerHTML = `
+        <button class="reel-play js-unmute" aria-label="Odtwórz z dźwiękiem">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      `;
+      frame.appendChild(overlay);
+    }
+
+    function pauseAndCleanupReels(exceptFrame){
       document.querySelectorAll('.reel-frame').forEach(frame => {
         if (exceptFrame && frame.isSameNode(exceptFrame)) return;
 
         const v = frame.querySelector('video');
         if (v) {
+          v.onended = null;
           v.pause();
           v.remove();
-
-          if (!frame.querySelector('img')) {
-            const poster = frame.dataset.poster || "";
-            if (poster) {
-              const img = document.createElement('img');
-              img.src = poster;
-              img.alt = "Miniatura rolki";
-              img.loading = "lazy";
-              frame.insertBefore(img, frame.firstChild);
-            }
-          }
         }
+        restoreReelPoster(frame);
+        ensureReelOverlay(frame);
       });
     }
 
-    function playActive(slideEl){
+    let reelsSwiper = null;
+
+    function bindReelGoNextOnEnded(video, frame){
+      video.onended = () => {
+        if (!reelsSwiper) return;
+
+        const activeSlide = reelsSwiper.slides[reelsSwiper.activeIndex];
+        if (!activeSlide || !activeSlide.contains(frame)) return;
+
+        reelsSwiper.slideNext();
+      };
+    }
+
+    function playActiveReel(slideEl){
       if (!slideEl) return;
       const frame = slideEl.querySelector('.reel-frame');
       if (!frame) return;
 
-      pauseAndCleanupAll(frame);
+      pauseAndCleanupReels(frame);
 
-      const v = ensureVideo(frame);
+      const v = ensureReelVideo(frame);
       if (!v) return;
 
+      v.muted = true;
+      v.removeAttribute('controls');
+      bindReelGoNextOnEnded(v, frame);
       v.play().catch(()=>{});
 
       const rid = frame.dataset.reelId || "reel";
@@ -920,38 +1057,17 @@
       try { fbq('trackCustom', 'ReelView', { content_name: rid }); } catch(e){}
     }
 
-    // Unmute / user intent
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.js-unmute');
-      if (!btn) return;
-
-      const frame = btn.closest('.reel-frame');
-      if (!frame) return;
-
-      const v = ensureVideo(frame);
-      if (!v) return;
-
-      v.muted = false;
-      v.setAttribute('controls', '');
-      v.play().catch(()=>{});
-
-      const overlay = frame.querySelector('.reel-overlay');
-      if (overlay) overlay.remove();
-
-      const rid = frame.dataset.reelId || "reel";
-      try { fbq('trackCustom', 'ReelPlay', { content_name: rid }); } catch(e){}
-    });
-
-    // ------- Swiper config: Instagram feel + peek -------
-    const reelsSwiper = new Swiper('#reelsSwiper', {
+    reelsSwiper = new Swiper('#reelsSwiper', {
       grabCursor: true,
       resistanceRatio: 0.7,
       speed: 520,
       watchSlidesProgress: true,
+
       slidesPerView: 1.07,
       spaceBetween: 12,
+      loop: true,
 
-      pagination: { el: '.swiper-pagination', clickable: true },
+      pagination: { el: '#rolki .swiper-pagination', clickable: true },
       navigation: { prevEl: '#reelsPrev', nextEl: '#reelsNext' },
 
       breakpoints: {
@@ -961,18 +1077,183 @@
       },
 
       on: {
-        init(sw){ playActive(sw.slides[sw.activeIndex]); },
-        slideChange(sw){ playActive(sw.slides[sw.activeIndex]); },
-        transitionEnd(sw){ playActive(sw.slides[sw.activeIndex]); }
+        init(sw){ playActiveReel(sw.slides[sw.activeIndex]); },
+        slideChange(sw){ playActiveReel(sw.slides[sw.activeIndex]); },
+        transitionEnd(sw){ playActiveReel(sw.slides[sw.activeIndex]); }
       }
+    });
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.js-unmute');
+      if (!btn) return;
+
+      const frame = btn.closest('.reel-frame');
+      if (!frame) return;
+
+      const v = ensureReelVideo(frame);
+      if (!v) return;
+
+      v.muted = false;
+      v.setAttribute('controls', '');
+      bindReelGoNextOnEnded(v, frame);
+      v.play().catch(()=>{});
+
+      const overlay = frame.querySelector('.reel-overlay');
+      if (overlay) overlay.remove();
+
+      const rid = frame.dataset.reelId || "reel";
+      try { fbq('trackCustom', 'ReelPlay', { content_name: rid }); } catch(e){}
+    });
+
+    // ---------------- DŁUŻSZE FILMY: preview muted + play on click ----------------
+    let filmsSwiper = null;
+
+    function ensureFilmVideo(frame){
+      let v = frame.querySelector('video');
+      if (v) return v;
+
+      const poster = frame.dataset.poster || "";
+      const mp4 = frame.dataset.mp4 || "";
+      if (!mp4) return null;
+
+      const img = frame.querySelector('img');
+
+      v = document.createElement('video');
+      v.setAttribute('playsinline', '');
+      v.muted = true;
+      v.setAttribute('muted', '');
+      v.loop = false;
+      v.preload = 'metadata';
+      if (poster) v.poster = poster;
+
+      const source = document.createElement('source');
+      source.src = mp4;
+      source.type = 'video/mp4';
+      v.appendChild(source);
+
+      frame.insertBefore(v, frame.firstChild);
+
+      v.addEventListener('loadeddata', () => {
+        if (img) img.remove();
+      }, { once: true });
+
+      return v;
+    }
+
+    function restoreFilmPoster(frame){
+      if (frame.querySelector('img')) return;
+      const poster = frame.dataset.poster || "";
+      if (!poster) return;
+      const img = document.createElement('img');
+      img.src = poster;
+      img.alt = "Miniatura filmu";
+      img.loading = "lazy";
+      frame.insertBefore(img, frame.firstChild);
+    }
+
+    function ensureFilmOverlay(frame){
+      if (frame.querySelector('.film-overlay')) return;
+      const overlay = document.createElement('div');
+      overlay.className = 'film-overlay';
+      overlay.innerHTML = `
+        <button class="film-play js-film-play" aria-label="Odtwórz film">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 7.5V16.5L16.5 12L9 7.5Z" stroke="white" stroke-width="1.9" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      `;
+      frame.appendChild(overlay);
+    }
+
+    function pauseAndCleanupFilms(exceptFrame){
+      document.querySelectorAll('.film-frame').forEach(frame => {
+        if (exceptFrame && frame.isSameNode(exceptFrame)) return;
+
+        const v = frame.querySelector('video');
+        if (v) {
+          v.pause();
+          v.remove();
+        }
+        restoreFilmPoster(frame);
+        ensureFilmOverlay(frame);
+      });
+    }
+
+    function playActiveFilmPreview(slideEl){
+      if (!slideEl) return;
+      const frame = slideEl.querySelector('.film-frame');
+      if (!frame) return;
+
+      pauseAndCleanupFilms(frame);
+
+      const v = ensureFilmVideo(frame);
+      if (!v) return;
+
+      v.muted = true;
+      v.removeAttribute('controls');
+      v.play().catch(()=>{});
+
+      const fid = frame.dataset.filmId || "film";
+      fbSafeTrack('ViewContent', { content_type: 'film', content_name: fid });
+      try { fbq('trackCustom', 'FilmPreview', { content_name: fid }); } catch(e){}
+    }
+
+    filmsSwiper = new Swiper('#filmsSwiper', {
+      grabCursor: true,
+      resistanceRatio: 0.7,
+      speed: 520,
+      watchSlidesProgress: true,
+
+      slidesPerView: 1.05,
+      spaceBetween: 12,
+      loop: true,
+
+      pagination: { el: '#filmsPagination', clickable: true },
+      navigation: { prevEl: '#filmsPrev', nextEl: '#filmsNext' },
+
+      breakpoints: {
+        576: { slidesPerView: 1.15, spaceBetween: 14 },
+        768: { slidesPerView: 2.05, spaceBetween: 14 },
+        992: { slidesPerView: 2.4, spaceBetween: 16 },
+      },
+
+      on: {
+        init(sw){ playActiveFilmPreview(sw.slides[sw.activeIndex]); },
+        slideChange(sw){ playActiveFilmPreview(sw.slides[sw.activeIndex]); },
+        transitionEnd(sw){ playActiveFilmPreview(sw.slides[sw.activeIndex]); }
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.js-film-play');
+      if (!btn) return;
+
+      const frame = btn.closest('.film-frame');
+      if (!frame) return;
+
+      pauseAndCleanupFilms(frame);
+
+      const v = ensureFilmVideo(frame);
+      if (!v) return;
+
+      v.muted = false;
+      v.setAttribute('controls', '');
+      v.play().catch(()=>{});
+
+      const overlay = frame.querySelector('.film-overlay');
+      if (overlay) overlay.remove();
+
+      const fid = frame.dataset.filmId || "film";
+      try { fbq('trackCustom', 'FilmPlay', { content_name: fid }); } catch(e){}
     });
 
     // Safety: pause videos when tab hidden
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        document.querySelectorAll('.reel-frame video').forEach(v => v.pause());
+        document.querySelectorAll('video').forEach(v => v.pause());
       } else {
-        playActive(reelsSwiper.slides[reelsSwiper.activeIndex]);
+        if (reelsSwiper) playActiveReel(reelsSwiper.slides[reelsSwiper.activeIndex]);
+        if (filmsSwiper) playActiveFilmPreview(filmsSwiper.slides[filmsSwiper.activeIndex]);
       }
     });
   </script>
