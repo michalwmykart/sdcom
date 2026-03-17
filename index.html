@@ -29,24 +29,24 @@
       --shadow:0 10px 30px rgba(0,0,0,.35);
       --radius:18px;
 
-      /* TYPO: ustawienia wg Twojej zasady */
-      --fz-body: 16px;        /* punkt odniesienia */
-      --fz-lead: 19px;        /* 18–20px */
-      --lh-body: 1.65;        /* 1.5–1.7 */
-      --lh-head: 1.18;        /* ~1.2 */
+      --fz-body: 16px;
+      --fz-lead: 19px;
+      --lh-body: 1.65;
+      --lh-head: 1.18;
       --tracking-body: .2px;
-      --tracking-lead: .7px;  /* większe odstępy */
-      --tracking-head: .5px;  /* delikatne tracking w nagłówkach */
+      --tracking-lead: .7px;
+      --tracking-head: .5px;
     }
 
-    html{ font-size: var(--fz-body); }
+    html{ font-size: var(--fz-body); scroll-behavior: smooth; }
     html, body { height: 100%; }
+
     body{
       font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       font-size: 1rem;
       line-height: var(--lh-body);
       letter-spacing: var(--tracking-body);
-      font-weight: 400; /* mniej „wyboldowana” baza */
+      font-weight: 400;
       color: var(--text);
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
       background-attachment: fixed;
@@ -59,7 +59,9 @@
     }
 
     .section-pad{ padding: 44px 0; }
-    @media (min-width: 768px){ .section-pad{ padding: 64px 0; } }
+    @media (min-width: 768px){
+      .section-pad{ padding: 64px 0; }
+    }
 
     .glass{
       background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
@@ -68,9 +70,10 @@
       box-shadow: var(--shadow);
       backdrop-filter: blur(10px);
     }
+
     .muted{
       color: var(--muted);
-      font-weight: 300;              /* cieńszy podtekst */
+      font-weight: 300;
       letter-spacing: var(--tracking-lead);
     }
 
@@ -78,18 +81,30 @@
       background: rgba(7,19,44,.78);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255,255,255,.08);
+      min-height: 96px;
     }
+
     .navbar-brand{
-      font-weight: 600; /* było 700 */
-      letter-spacing: .3px;
-      line-height: 1.15;
+      padding: .35rem 0;
+      display: flex;
+      align-items: center;
     }
-    .brand-mark{
-      width: 34px; height: 34px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: 0 12px 28px rgba(122,166,217,.16);
+
+    .navbar-logo{
+      display: block;
+      height: 72px;
+      width: auto;
+      max-width: 280px;
+      object-fit: contain;
     }
+
+    @media (min-width: 768px){
+      .navbar-logo{
+        height: 84px;
+        max-width: 340px;
+      }
+    }
+
     .nav-link{
       color: rgba(255,255,255,.80) !important;
       font-weight: 500;
@@ -98,26 +113,29 @@
       padding: .55rem .85rem !important;
       -webkit-tap-highlight-color: transparent;
     }
-    .nav-link:hover{ color: var(--text) !important; background: rgba(255,255,255,.06); }
 
-    .anchor-offset{ scroll-margin-top: 92px; }
-    .hero-wrap{ padding-top: 92px; }
+    .nav-link:hover{
+      color: var(--text) !important;
+      background: rgba(255,255,255,.06);
+    }
+
+    .anchor-offset{ scroll-margin-top: 100px; }
+    .hero-wrap{ padding-top: 100px; }
 
     .hero-title{
-      /* H1 ~ 2–2.5× body: 32–40px */
       font-size: clamp(32px, 4.6vw, 40px);
-      font-weight: 600;               /* mniej bold */
+      font-weight: 600;
       letter-spacing: var(--tracking-head);
       line-height: var(--lh-head);
       margin-bottom: .75rem;
     }
+
     .hero-lead{
-      /* lead 18–20px */
       font-size: clamp(18px, 2.2vw, 20px);
       line-height: 1.7;
       color: var(--muted);
-      font-weight: 300;               /* cieńszy */
-      letter-spacing: var(--tracking-lead); /* większe odstępy */
+      font-weight: 300;
+      letter-spacing: var(--tracking-lead);
       margin-bottom: .85rem;
     }
 
@@ -134,17 +152,25 @@
       justify-content: center;
       text-align: center;
     }
-    @media (min-width: 576px){ .hero-slider-card{ padding: 22px; min-height: 480px; } }
-    @media (min-width: 992px){ .hero-slider-card{ padding: 28px; min-height: 520px; } }
+
+    @media (min-width: 576px){
+      .hero-slider-card{ padding: 22px; min-height: 480px; }
+    }
+
+    @media (min-width: 992px){
+      .hero-slider-card{ padding: 28px; min-height: 520px; }
+    }
 
     .hero-slider-card:before{
       content:"";
-      position:absolute; inset: -2px;
+      position:absolute;
+      inset: -2px;
       background:
         radial-gradient(700px 260px at 10% 0%, rgba(122,166,217,.14), transparent 60%),
         radial-gradient(600px 260px at 90% 10%, rgba(95,127,179,.16), transparent 60%);
       z-index: 0;
     }
+
     .hero-slider-card > *{ position: relative; z-index: 1; }
     .hero-slide-inner{ width: min(900px, 100%); margin-inline: auto; }
 
@@ -158,7 +184,7 @@
       border: 1px solid var(--border);
       background: rgba(255,255,255,.05);
       color: rgba(255,255,255,.88);
-      font-weight: 400;     /* było 500 */
+      font-weight: 400;
       letter-spacing: .35px;
       margin: .30rem;
       white-space: nowrap;
@@ -166,29 +192,36 @@
     }
 
     .carousel-control-prev, .carousel-control-next{ width: 12%; }
-    @media (min-width: 992px){ .carousel-control-prev, .carousel-control-next{ width: 10%; } }
+    @media (min-width: 992px){
+      .carousel-control-prev, .carousel-control-next{ width: 10%; }
+    }
+
     .carousel-control-prev-icon, .carousel-control-next-icon{
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.35));
       opacity: .85;
     }
+
     .carousel-indicators [data-bs-target]{
-      width: 10px; height: 10px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
       border: 0;
       opacity: .35;
     }
+
     .carousel-indicators .active{ opacity: .9; }
 
     .section-title{
-      font-weight: 600; /* było 700 */
+      font-weight: 600;
       letter-spacing: var(--tracking-head);
       font-size: clamp(24px, 3.2vw, 30px);
       line-height: var(--lh-head);
     }
+
     .section-sub{
       color: var(--muted);
       margin-top: .35rem;
-      font-size: clamp(18px, 2.0vw, 20px); /* leadowe proporcje */
+      font-size: clamp(18px, 2.0vw, 20px);
       line-height: 1.7;
       font-weight: 300;
       letter-spacing: var(--tracking-lead);
@@ -200,15 +233,16 @@
       hyphens: auto;
     }
 
-    /* Swiper common */
     .swiper-nav{
       display:flex;
       gap:10px;
       justify-content:flex-end;
       align-items:center;
     }
+
     .swiper-btn{
-      width: 44px; height: 44px;
+      width: 44px;
+      height: 44px;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.14);
       background: rgba(255,255,255,.05);
@@ -218,11 +252,11 @@
       cursor:pointer;
       user-select:none;
     }
+
     .swiper-btn:hover{ background: rgba(255,255,255,.08); }
     .swiper-pagination-bullet{ width: 8px; height: 8px; opacity: .35; }
     .swiper-pagination-bullet-active{ opacity: .9; }
 
-    /* ROLKI (9:16) */
     .reels-swiper{ overflow: visible; padding: 6px 0 28px; }
     .reels-swiper .swiper-slide{ height: auto; }
     .reel-card{ padding: 12px; }
@@ -237,21 +271,25 @@
       background: rgba(0,0,0,.25);
       transform: translateZ(0);
     }
+
     .reel-frame img, .reel-frame video{
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .reel-frame:after{
       content:"";
-      position:absolute; inset: 0;
+      position:absolute;
+      inset: 0;
       background:
         radial-gradient(350px 250px at 50% 80%, rgba(0,0,0,.35), transparent 55%),
         radial-gradient(300px 180px at 20% 20%, rgba(255,255,255,.10), transparent 55%);
       pointer-events: none;
       z-index: 2;
     }
+
     .reel-overlay{
       position: absolute;
       inset: 0;
@@ -259,24 +297,27 @@
       place-items: center;
       z-index: 3;
     }
+
     .reel-play{
-      width: 58px; height: 58px;
+      width: 58px;
+      height: 58px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.22);
       background: rgba(0,0,0,.35);
-      display: grid; place-items: center;
+      display: grid;
+      place-items: center;
       backdrop-filter: blur(8px);
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
+
     .reel-play svg{ width: 24px; height: 24px; }
     .reel-play:focus-visible{ outline: 3px solid rgba(122,166,217,.35); outline-offset: 3px; }
 
-    /* DŁUŻSZE FILMY (16:9) */
     .films-swiper{ overflow: visible; padding: 6px 0 28px; }
     .films-swiper .swiper-slide{ height: auto; }
-
     .film-card{ padding: 14px; }
+
     .film-frame{
       position: relative;
       width: 100%;
@@ -287,21 +328,25 @@
       background: rgba(0,0,0,.22);
       transform: translateZ(0);
     }
+
     .film-frame img, .film-frame video{
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
     .film-frame:after{
       content:"";
-      position:absolute; inset: 0;
+      position:absolute;
+      inset: 0;
       background:
         radial-gradient(520px 260px at 70% 85%, rgba(0,0,0,.38), transparent 60%),
         radial-gradient(420px 220px at 20% 20%, rgba(255,255,255,.08), transparent 60%);
       pointer-events: none;
       z-index: 2;
     }
+
     .film-overlay{
       position: absolute;
       inset: 0;
@@ -309,19 +354,22 @@
       place-items: center;
       z-index: 3;
     }
+
     .film-play{
-      width: 62px; height: 62px;
+      width: 62px;
+      height: 62px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,.22);
       background: rgba(0,0,0,.35);
-      display: grid; place-items: center;
+      display: grid;
+      place-items: center;
       backdrop-filter: blur(8px);
       cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
+
     .film-play svg{ width: 26px; height: 26px; }
 
-    /* ABOUT */
     .about-img{
       width: 100%;
       border-radius: var(--radius);
@@ -332,6 +380,7 @@
       min-height: 260px;
       max-height: 420px;
     }
+
     @media (min-width: 992px){
       .about-img{
         object-fit: contain;
@@ -341,24 +390,10 @@
       }
     }
 
-    /* ABOUT (NEW) */
     .about-card{ padding: 22px; }
-    @media (min-width: 768px){ .about-card{ padding: 26px; } }
-
-    .about-kicker{
-      display: inline-flex;
-      align-items: center;
-      gap: .55rem;
-      padding: .40rem .70rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.05);
-      color: rgba(255,255,255,.86);
-      font-weight: 400;
-      letter-spacing: .5px;
-      margin-bottom: .85rem;
+    @media (min-width: 768px){
+      .about-card{ padding: 26px; }
     }
-    .about-kicker i{ font-size: 1.05rem; opacity: .95; }
 
     .about-lead{
       font-size: clamp(18px, 2.0vw, 20px);
@@ -386,6 +421,7 @@
       border: 1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.04);
     }
+
     .about-point .dot{
       width: 36px;
       height: 36px;
@@ -398,7 +434,12 @@
       box-shadow: 0 10px 22px rgba(0,0,0,.20);
       margin-top: 2px;
     }
-    .about-point .dot i{ font-size: 1.05rem; color: rgba(255,255,255,.92); }
+
+    .about-point .dot i{
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.92);
+    }
+
     .about-point p{
       margin: 0;
       color: rgba(255,255,255,.82);
@@ -419,12 +460,17 @@
       font-weight: 300;
       line-height: 1.75;
     }
-    .about-cta strong{ color: rgba(255,255,255,.95); font-weight: 600; }
+
+    .about-cta strong{
+      color: rgba(255,255,255,.95);
+      font-weight: 600;
+    }
 
     footer{
       border-top: 1px solid rgba(255,255,255,.08);
       background: rgba(0,0,0,.12);
     }
+
     .footer-link{
       color: rgba(255,255,255,.82);
       text-decoration: none;
@@ -439,28 +485,19 @@
       font-weight: 400;
       letter-spacing: .45px;
     }
-    .footer-link:hover{ color: #fff; background: rgba(255,255,255,.07); }
-    .footer-link i{ font-size: 1.15rem; line-height: 1; }
 
-    /* small helpers */
-    .film-badge{
-      position:absolute;
-      top: 10px; left: 10px;
-      z-index: 4;
-      padding: .25rem .5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.35);
-      color: rgba(255,255,255,.88);
-      font-size: .85rem;
-      backdrop-filter: blur(8px);
-      pointer-events:none;
-      letter-spacing: .4px;
-      font-weight: 400;
+    .footer-link:hover{
+      color: #fff;
+      background: rgba(255,255,255,.07);
+    }
+
+    .footer-link i{
+      font-size: 1.15rem;
+      line-height: 1;
     }
   </style>
 
-  <!-- META PIXEL (wklej swój Pixel ID) -->
+  <!-- META PIXEL -->
   <script>
     const META_PIXEL_ID = "PUT_YOUR_PIXEL_ID_HERE";
 
@@ -487,10 +524,6 @@
 
     fbSafeTrack('PageView');
   </script>
-  <noscript>
-    <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=PUT_YOUR_PIXEL_ID_HERE&ev=PageView&noscript=1"/>
-  </noscript>
 </head>
 
 <body>
@@ -498,12 +531,8 @@
   <!-- NAVBAR -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-        <span class="brand-mark d-inline-block"></span>
-        <span>
-          Szymon Domagalski<br class="d-none d-md-block">
-          <span class="fw-semibold muted">Social Media, które sprzedają.</span>
-        </span>
+      <a class="navbar-brand" href="#home" aria-label="Szymon Domagalski - strona główna">
+        <img src="logo-sdcom/logosdcom__white.png" alt="Logo Szymon Domagalski" class="navbar-logo">
       </a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
@@ -547,7 +576,7 @@
                 <div class="d-flex flex-wrap justify-content-center">
                   <span class="icon-pill">📞 telefon</span>
                   <span class="icon-pill">📧 e-mail</span>
-                  <span class="icon-pill">ℹ️ informacja, jakim produktem lub usługą są zainteresowani </span>
+                  <span class="icon-pill">ℹ️ informacja, jakim produktem lub usługą są zainteresowani</span>
                 </div>
               </div>
             </div>
@@ -559,8 +588,8 @@
                 <h2 class="hero-title">Content / Prowadzenie Social Media / Kampanie</h2>
                 <p class="hero-lead">Tworzę skuteczny content na social media: rolki wideo, zdjęcia oraz animacje.</p>
                 <p class="hero-lead">
-                  Efektywnie wspieram content kampaniami reklamowymi nastawionymi na sprzedaż <br>i pozyskiwanie leadów –
-                  zarówno w formie działań doraźnych, jak i długofalowych kampanii sprzedażowych.</br>
+                  Efektywnie wspieram content kampaniami reklamowymi nastawionymi na sprzedaż<br>
+                  i pozyskiwanie leadów – zarówno w formie działań doraźnych, jak i długofalowych kampanii sprzedażowych.</br>
                 </p>
               </div>
             </div>
@@ -571,14 +600,15 @@
               <div class="hero-slide-inner">
                 <h2 class="hero-title">Szkolenia wideo i szkolenia z Social Media</h2>
                 <p class="hero-lead">
-                  Prowadzę praktyczne szkolenia z wideo i social media — zarówno ogólne, jak
-                  <br>i przygotowane indywidualnie pod konkretną branżę oraz potrzeby firmy.</br>
+                  Prowadzę praktyczne szkolenia z wideo i social media — zarówno ogólne,
+                  jak <br>i przygotowane indywidualnie pod konkretną branżę oraz potrzeby firmy.</br>
                 </p>
                 <p class="hero-lead">
-                  Uczestnicy zdobywają realne umiejętności tworzenia wideo, prowadzenia profili <br>i skutecznych kampanii reklamowych.</br>
+                  Uczestnicy zdobywają realne umiejętności tworzenia wideo, prowadzenia profili<br>
+                  i skutecznych kampanii reklamowych.</br>
                 </p>
                 <p class="hero-lead mb-0">
-                  Warsztaty skupiają się przede wszystkim na praktyce, dzięki czemu uczestnicy nie tylko rozumieją zagadnienia, ale też naprawdę zaczynają to wszystko czuć!
+                  Warsztaty skupiają się przede wszystkim na praktyce, dzięki czemu uczestnicy nie tylko rozumieją zagadnienia, ale też naprawdę zaczynają to wszystko czuć.
                 </p>
               </div>
             </div>
@@ -614,7 +644,6 @@
       <div class="swiper reels-swiper" id="reelsSwiper">
         <div class="swiper-wrapper">
 
-          <!-- 01 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/🍦 Mini Freezer Gelato Chef 5L Nemox – profesjonalne lody w Twojej kawiarni, lodziarni i domu!✅ .mp4" data-poster="posters/thumbnail_1_2.1s.png" data-reel-id="reel_01">
@@ -630,7 +659,6 @@
             </div>
           </div>
 
-          <!-- 02 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/🚀 🪵Nowy magazyn i nowa platforma B2B – Komplex Market rośnie razem z Wami! Więcej miejsca to w.mp4" data-poster="posters/thumbnail_1_4.5s.png" data-reel-id="reel_02">
@@ -646,7 +674,6 @@
             </div>
           </div>
 
-          <!-- 03 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/🎥 Ostatnio odwiedził nas Master Instructore z włoskiej Scuola Italiana Pizzaioli! 🇮🇹🍕Rok tem.mp4" data-poster="posters/thumbnail_1_9.8s.png" data-reel-id="reel_03">
@@ -662,7 +689,6 @@
             </div>
           </div>
 
-          <!-- 04 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/A dyg.mp4" data-poster="posters/thumbnail_1_1.6s.png" data-reel-id="reel_04">
@@ -678,7 +704,6 @@
             </div>
           </div>
 
-          <!-- 05 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/🎉 Contur Mix – 40 lat z komiksem! 🎨📍 18.07–31.08.2025 - Galeria CKiS, SkierniewiceZapraszamy .mp4" data-poster="posters/thumbnail_1_29.0s.png" data-reel-id="reel_05">
@@ -694,7 +719,6 @@
             </div>
           </div>
 
-          <!-- 06 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/Efni.mp4" data-poster="posters/thumbnail_1_19.8s.png" data-reel-id="reel_06">
@@ -710,7 +734,6 @@
             </div>
           </div>
 
-          <!-- 07 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/Sigep Oryginał .mov" data-poster="posters/thumbnail_1_0.0s_s.png" data-reel-id="reel_07">
@@ -726,7 +749,6 @@
             </div>
           </div>
 
-          <!-- 08 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="arrosta finał .mp4" data-poster="posters/thumbnail_1_1.4s.png" data-reel-id="reel_08">
@@ -742,7 +764,6 @@
             </div>
           </div>
 
-          <!-- 09 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="Arek 2_5.mp4" data-poster="posters/thumbnail_1_18.8s.png" data-reel-id="reel_09">
@@ -758,7 +779,6 @@
             </div>
           </div>
 
-          <!-- 10 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="wystawa lego 3.mp4" data-poster="posters/thumbnail_1_7.2s.png" data-reel-id="reel_10">
@@ -774,7 +794,6 @@
             </div>
           </div>
 
-          <!-- 11 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="Diesel-Fuel-System-Attack-Dirty-Filter-and-Fuel-Problems-1758286114.mp4" data-poster="posters/thumbnail_1_6.5s.png" data-reel-id="reel_11">
@@ -790,7 +809,6 @@
             </div>
           </div>
 
-          <!-- 12 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="🔥🌡️ Temperatura dziś w powietrzu i na scenie CKiS była naprawdę gorąca!Scena Taneczna rozgrzał.mp4" data-poster="posters/thumbnail_1_1.9s.png" data-reel-id="reel_12">
@@ -806,7 +824,6 @@
             </div>
           </div>
 
-          <!-- 13 -->
           <div class="swiper-slide">
             <div class="glass reel-card">
               <div class="reel-frame" data-mp4="videos/WOSP 4_2.mp4" data-poster="posters/thumbnail_1_2.3s.png" data-reel-id="reel_13">
@@ -835,7 +852,7 @@
       <div class="row align-items-end g-3 mb-3">
         <div class="col-lg-8">
           <h2 class="section-title mb-1">Rozbudowane formy wideo</h2>
-          <p class="section-sub mb-0">Materiały, które pokazują więcej – zwiększając wiarygodność i decyzje zakupowe.</p>
+          <p class="section-sub mb-0">Materiały, które pokazują więcej – budują wizerunek i zwiększają sprzedaż.</p>
         </div>
         <div class="col-lg-4 d-none d-lg-flex justify-content-end">
           <div class="swiper-nav">
@@ -848,7 +865,6 @@
       <div class="swiper films-swiper" id="filmsSwiper">
         <div class="swiper-wrapper">
 
-          <!-- 01 -->
           <div class="swiper-slide">
             <article class="glass film-card">
               <div class="film-frame"
@@ -867,7 +883,6 @@
             </article>
           </div>
 
-          <!-- 02 -->
           <div class="swiper-slide">
             <article class="glass film-card">
               <div class="film-frame"
@@ -886,7 +901,6 @@
             </article>
           </div>
 
-          <!-- 03 -->
           <div class="swiper-slide">
             <article class="glass film-card">
               <div class="film-frame"
@@ -905,7 +919,6 @@
             </article>
           </div>
 
-          <!-- 04 -->
           <div class="swiper-slide">
             <article class="glass film-card">
               <div class="film-frame"
@@ -924,7 +937,6 @@
             </article>
           </div>
 
-          <!-- 05 -->
           <div class="swiper-slide">
             <article class="glass film-card">
               <div class="film-frame"
@@ -955,7 +967,7 @@
     </div>
   </section>
 
-  <!-- O MNIE (NOWY TEKST) -->
+  <!-- O MNIE -->
   <section id="o-mnie" class="section-pad anchor-offset">
     <div class="container">
       <div class="row g-4 align-items-center">
@@ -963,8 +975,6 @@
           <h2 class="section-title mb-2">Kilka słów o mnie</h2>
 
           <div class="glass about-card mt-3">
-            <div class=""></div>
-
             <p class="about-lead text-justify">
               Od ponad <strong>15 lat</strong> pomagam firmom i instytucjom wykorzystywać wideo i content do realizacji celów
               marketingowych i sprzedażowych.
@@ -981,7 +991,7 @@
               <li class="about-point">
                 <div class="dot" aria-hidden="true"><i class="bi bi-bullseye"></i></div>
                 <p class="text-justify">
-                  Wychodzę od celu reklamowego, tworzę plan a następnie realizuję materiały. Potem rozliczamy wyniki biznesowe.
+                  Wychodzę od celu reklamowego, tworzę plan, a następnie realizuję materiały. Potem rozliczamy wyniki biznesowe.
                 </p>
               </li>
 
@@ -1001,7 +1011,7 @@
             </ul>
 
             <div class="about-cta text-justify">
-              Jeśli szukasz rzetelnej współpracy, bez zbędnego dystansu — <br><strong>zapraszam!</strong></br>
+              Jeśli szukasz rzetelnej współpracy, bez zbędnego dystansu — <strong>zapraszam!</strong>
             </div>
           </div>
         </div>
@@ -1058,10 +1068,8 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
   <script>
-    // year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Track klików kontaktowych (Meta Ads)
     document.addEventListener('click', (e) => {
       const a = e.target.closest('.js-track');
       if (!a) return;
@@ -1070,7 +1078,6 @@
       try { fbq('trackCustom', 'Contact', { content_name: key }); } catch(e){}
     });
 
-    // ---------------- ROLKI: auto-next po ended ----------------
     function ensureReelVideo(frame){
       let v = frame.querySelector('video');
       if (v) return v;
@@ -1179,20 +1186,16 @@
       resistanceRatio: 0.7,
       speed: 520,
       watchSlidesProgress: true,
-
       slidesPerView: 1.07,
       spaceBetween: 12,
       loop: true,
-
       pagination: { el: '#rolki .swiper-pagination', clickable: true },
       navigation: { prevEl: '#reelsPrev', nextEl: '#reelsNext' },
-
       breakpoints: {
         576: { slidesPerView: 1.35, spaceBetween: 14 },
         768: { slidesPerView: 2.15, spaceBetween: 14 },
         992: { slidesPerView: 3.15, spaceBetween: 14 },
       },
-
       on: {
         init(sw){ playActiveReel(sw.slides[sw.activeIndex]); },
         slideChange(sw){ playActiveReel(sw.slides[sw.activeIndex]); },
@@ -1222,7 +1225,6 @@
       try { fbq('trackCustom', 'ReelPlay', { content_name: rid }); } catch(e){}
     });
 
-    // ---------------- DŁUŻSZE FILMY: preview muted + play on click ----------------
     let filmsSwiper = null;
 
     function ensureFilmVideo(frame){
@@ -1320,20 +1322,16 @@
       resistanceRatio: 0.7,
       speed: 520,
       watchSlidesProgress: true,
-
       slidesPerView: 1.05,
       spaceBetween: 12,
       loop: true,
-
       pagination: { el: '#filmsPagination', clickable: true },
       navigation: { prevEl: '#filmsPrev', nextEl: '#filmsNext' },
-
       breakpoints: {
         576: { slidesPerView: 1.15, spaceBetween: 14 },
         768: { slidesPerView: 2.05, spaceBetween: 14 },
         992: { slidesPerView: 2.4, spaceBetween: 16 },
       },
-
       on: {
         init(sw){ playActiveFilmPreview(sw.slides[sw.activeIndex]); },
         slideChange(sw){ playActiveFilmPreview(sw.slides[sw.activeIndex]); },
@@ -1341,9 +1339,9 @@
       }
     });
 
-    // mobile arrows
     const prevM = document.getElementById('filmsPrevM');
     const nextM = document.getElementById('filmsNextM');
+
     if (prevM && nextM){
       prevM.addEventListener('click', () => filmsSwiper && filmsSwiper.slidePrev());
       nextM.addEventListener('click', () => filmsSwiper && filmsSwiper.slideNext());
@@ -1372,7 +1370,6 @@
       try { fbq('trackCustom', 'FilmPlay', { content_name: fid }); } catch(e){}
     });
 
-    // Safety: pause videos when tab hidden
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         document.querySelectorAll('video').forEach(v => v.pause());
